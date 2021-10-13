@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect } from "react";
 import { ReactComponent as Logo } from "../assets/logo.svg";
 import { ReactComponent as MenuSvg } from "../assets/menu.svg";
 import { ReactComponent as Shop } from "../assets/shop.svg";
@@ -8,7 +8,7 @@ const Menu: FC = () => {
     const deckId = useDeckContext().deckId;
     const decks = useDeckContext().decks;
 
-    const [lastScrollTop, setlastScrollTop] = useState(0);
+    let lastScrollTop: number;
 
     useEffect(() => {
         window.addEventListener(
@@ -18,12 +18,11 @@ const Menu: FC = () => {
                 const element = document.getElementById("sub-menu");
 
                 if (st > lastScrollTop && element !== null && st !== null) {
-                    console.log("yeeet");
                     element.style.bottom = "100%";
                 } else if (element !== null && st !== null) {
                     element.style.bottom = "0";
                 }
-                setlastScrollTop(st);
+                lastScrollTop = st;
             },
             false
         );
