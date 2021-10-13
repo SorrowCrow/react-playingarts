@@ -1,5 +1,5 @@
-import path from "path";
-import express from "express";
+const path = require("path");
+const express = require("express");
 const app = express();
 
 const { PORT, mongoUri, captcha, privateKey } = require("./config");
