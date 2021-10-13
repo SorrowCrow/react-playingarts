@@ -1,0 +1,78 @@
+@media only screen and (max-width: $md-breakpoint) {
+    .DeckHeader h1 {
+        width: min-content;
+    }
+}
+
+.DeckHeader {
+    background-color: black;
+    color: white;
+    padding-top: 16.25rem;
+    padding-bottom: 1.3125rem;
+    .nft {
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 1.875rem;
+        line-height: 1.8125rem;
+        letter-spacing: -0.05em;
+    }
+    .description {
+        font-size: 1.875rem;
+        line-height: 150%;
+        color: rgba(255, 255, 255, 0.8);
+        max-width: 63.75rem;
+        margin-top: 1.5625rem;
+        padding-bottom: 2.875rem;
+        margin-bottom: 1.875rem;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    }
+    .deckMenu {
+        flex-wrap: wrap;
+        font-weight: 600;
+        font-size: 1.125rem;
+        line-height: 1.3125rem;
+        color: rgba(255, 255, 255, 0.8);
+        &-item {
+            margin-bottom: 1.875rem;
+            display: flex;
+            margin-right: 2.5rem;
+            .openseaBtn {
+                margin-right: 1.25rem;
+            }
+        }
+    }
+}
+.bg-daysleftCarousel {
+    background: rgba(255, 255, 255, 0.8);
+    .daysleftCarousel {
+        height: 5rem;
+        z-index: 0;
+        .fader {
+            height: 100%;
+            width: 11.25rem;
+            position: absolute;
+            background: linear-gradient(90deg, white 0%, rgba(252, 252, 252, 0) 100%);
+            z-index: 1;
+        }
+        .tr-180 {
+            right: 0;
+        }
+        .looped {
+            box-shadow: 0px 4px 10px 0 rgba(0, 0, 0, 0.05);
+            height: 100%;
+            .looped-item {
+                margin-right: 3.75rem;
+                width: max-content;
+                color: rgba(0, 0, 0, 0.4);
+                font-weight: 500;
+                font-size: 1.125rem;
+                line-height: 1.3125rem;
+                @keyframes looped {
+                    100% {
+                        transform: translateX(326px);
+                    }
+                }
+                animation: 5s linear infinite looped;
+            }
+        }
+    }
+}

@@ -1,0 +1,18 @@
+@import "./components/Menu";
+
+@import "./components/deck/DeckHeader";
+
+@import "./components/deck/Cards";
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+    font-family: $default-font;
+    margin: 0;
+    cursor: default;
+    background: #f2f2f2;
+    height: 5000px;
+}
