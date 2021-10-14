@@ -40,18 +40,12 @@ const Menu: FC = () => {
         function listener() {
             if (cardsElement?.offsetTop !== undefined && cardsElement?.offsetTop - (window.pageYOffset + 141) < 0) {
                 deckMenu_cards !== null && deckMenu_cards.classList.add("active");
-            } else if (
-                submenuElement?.offsetTop !== undefined &&
-                submenuElement?.offsetTop - (window.pageYOffset + 30) < 0
-            ) {
+            } else if (submenuElement?.offsetTop !== undefined && submenuElement?.offsetTop - window.pageYOffset < 0) {
                 decks[0].name && setplayingarts(decks[0].name);
                 logo !== null && (logo.style.marginTop = "-5rem");
                 currentdeck !== null && (currentdeck.style.top = "-4.375rem");
                 deckMenu_cards !== null && deckMenu_cards.classList.remove("active");
-            } else if (
-                submenuElement?.offsetTop !== undefined &&
-                submenuElement?.offsetTop - (window.pageYOffset + 30) > 0
-            ) {
+            } else if (submenuElement?.offsetTop !== undefined && submenuElement?.offsetTop - window.pageYOffset > 0) {
                 logo !== null && (logo.style.marginTop = "");
                 currentdeck !== null && (currentdeck.style.top = "0");
             }
@@ -75,9 +69,9 @@ const Menu: FC = () => {
         <header className={`header fixed overflow-hidden`}>
             <div className={`flex content-between main-menu overflow-hidden`}>
                 <div className={`flex menu`}>
-                    <a href="">
+                    <a href="" className={`h-p`}>
                         <MenuSvg
-                            className="menuSvg h-p relative"
+                            className="menuSvg relative"
                             onMouseLeave={menuOut}
                             onMouseEnter={menuHover}
                             fill={`white`}
