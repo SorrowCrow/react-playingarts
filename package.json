@@ -1,7 +1,15 @@
 {
     "dependencies": {
         "dotenv": "^10.0.0",
-        "express": "^4.17.1"
+        "express": "^4.17.1",
+        "@testing-library/jest-dom": "^5.14.1",
+        "@testing-library/react": "^11.2.7",
+        "@testing-library/user-event": "^12.8.3",
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2",
+        "react-scripts": "4.0.3",
+        "tiny-slider": "^2.9.3",
+        "web-vitals": "^1.1.2"
     },
     "devDependencies": {
         "@types/express": "^4.17.13",
@@ -9,7 +17,33 @@
         "ts-node": "^10.3.0"
     },
     "scripts": {
-        "start": "node server.js",
-        "build": "npm run build --prefix client"
+        "start-react": "npm run start --prefix client",
+        "build": "npm run build --prefix client",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject",
+        "start": "node server.js"
+    },
+    "eslintConfig": {
+        "extends": [
+            "react-app",
+            "react-app/jest"
+        ]
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "devDependencies": {
+        "@types/react": "^17.0.28",
+        "@types/react-dom": "^17.0.9",
+        "sass": "^1.42.1"
     }
 }
