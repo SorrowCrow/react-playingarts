@@ -14,7 +14,10 @@
     "devDependencies": {
         "@types/express": "^4.17.13",
         "@types/node": "^16.10.9",
-        "ts-node": "^10.3.0"
+        "ts-node": "^10.3.0",
+        "@types/react": "^17.0.28",
+        "@types/react-dom": "^17.0.9",
+        "sass": "^1.42.1"
     },
     "scripts": {
         "start-react": "npm run start --prefix client",
@@ -40,10 +43,5 @@
             "last 1 firefox version",
             "last 1 safari version"
         ]
-    },
-    "devDependencies": {
-        "@types/react": "^17.0.28",
-        "@types/react-dom": "^17.0.9",
-        "sass": "^1.42.1"
     }
 }
