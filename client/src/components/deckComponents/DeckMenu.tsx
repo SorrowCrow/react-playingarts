@@ -9,7 +9,7 @@ function scroll(id: any) {
     const element = document.querySelector(id);
     element !== null &&
         window.scrollTo({
-            top: element.offsetTop-140,
+            top: element.offsetTop - 140,
             behavior: "smooth",
         });
 }
@@ -20,7 +20,6 @@ const DeckMenu = ({ items, id }: Props) => {
             {items.map((item: string | ReactElement) => (
                 <div
                     id={id === "" ? "deckMenu_" + item.toString() : ""}
-                    onClick={() => scroll(`#${item}`)}
                     className={`deckMenu-item ${typeof item === "string" ? "h-p" : ""}`}
                 >
                     {item}

@@ -75,12 +75,14 @@ const Menu: FC = () => {
         <header className={`header fixed overflow-hidden`}>
             <div className={`flex content-between main-menu overflow-hidden`}>
                 <div className={`flex menu`}>
-                    <MenuSvg
-                        className="menuSvg h-p relative"
-                        onMouseLeave={menuOut}
-                        onMouseEnter={menuHover}
-                        fill={`white`}
-                    />
+                    <a href="">
+                        <MenuSvg
+                            className="menuSvg h-p relative"
+                            onMouseLeave={menuOut}
+                            onMouseEnter={menuHover}
+                            fill={`white`}
+                        />
+                    </a>
                     <div className={`currentDeck relative`} id="currentdeck">
                         <div className={`flex align-center company`}>PLAYING ARTS</div>
                         <div className={`flex align-center deck`}>{playingarts}</div>
@@ -90,7 +92,9 @@ const Menu: FC = () => {
                     <Logo className={`align-self-center logo h-100 relative`} />
                     <DeckMenu id="" items={["cards", "supply", "stats", "product", "gallery", "roadmap"]} />
                 </div>
-                <Shop className={`h-p shop`} fill={`#510eac`} />
+                <a href="">
+                    <Shop className={`h-p shop`} fill={`#510eac`} />
+                </a>
             </div>
             <div className={`overflow-hidden sub-menu-container`}>
                 <div className={`flex content-center sub-menu relative`} id={`sub-menu`}>

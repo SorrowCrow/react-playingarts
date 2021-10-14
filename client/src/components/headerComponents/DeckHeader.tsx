@@ -28,7 +28,14 @@ const DeckHeader: FC = () => {
 
     return (
         <>
-            <div className={`DeckHeader`}>
+            <div className={`DeckHeader overflow-hidden relative`}>
+                <div className={`videoCover absolute`}></div>
+                <video className={`absolute`} id="background-video" autoPlay loop muted>
+                    <source
+                        src="https://dl.dropbox.com/s/10pvny6dkqefsu7/141021_Flying_Cards_Main.mp4?dl=0"
+                        type="video/mp4"
+                    />
+                </video>
                 <div className={`mgl-2`}>
                     <h1 className={`flex`}>
                         {decks[0].name}
@@ -41,8 +48,12 @@ const DeckHeader: FC = () => {
                     <DeckMenu
                         items={[
                             <>
-                                <OpenseaButton className={`openseaBtn h-p`} />
-                                <Share className={`h-p`} />
+                                <a href="">
+                                    <OpenseaButton className={`openseaBtn h-p`} />
+                                </a>
+                                <a href="">
+                                    <Share className={`h-p`} />
+                                </a>
                             </>,
                             "cards",
                             "supply",
