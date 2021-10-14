@@ -13,7 +13,7 @@
         color: rgba(255, 255, 255, 0.4);
         font-size: 1.875rem;
         line-height: 1.8125rem;
-        letter-spacing: -0.05em;
+        letter-spacing: -0.05rem;
     }
     .description {
         font-size: 1.875rem;
@@ -31,6 +31,7 @@
         font-size: 1.125rem;
         line-height: 1.3125rem;
         color: rgba(255, 255, 255, 0.8);
+        text-transform: uppercase;
         &-item {
             margin-bottom: 1.875rem;
             display: flex;
@@ -42,7 +43,7 @@
     }
 }
 .bg-daysleftCarousel {
-    background: rgba(255, 255, 255, 0.8);
+    background: white;
     .daysleftCarousel {
         height: 5rem;
         z-index: 0;
@@ -57,7 +58,7 @@
             right: 0;
         }
         .looped {
-            box-shadow: 0px 4px 10px 0 rgba(0, 0, 0, 0.05);
+            box-shadow: 0px 0.25rem 0.625rem 0 rgba(0, 0, 0, 0.05);
             height: 100%;
             .looped-item {
                 margin-right: 3.75rem;

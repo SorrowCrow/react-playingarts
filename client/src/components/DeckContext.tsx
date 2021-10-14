@@ -25,7 +25,7 @@ export function useDeckContext() {
 }
 
 const DeckProvider = ({ children }: Props) => {
-    const [deckId, setdeckId] = useState(6);
+    const [deckId, setdeckId] = useState(-1);
     const decks = [
         {
             name: `Crypto Edition`,

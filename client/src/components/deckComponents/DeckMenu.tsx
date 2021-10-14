@@ -1,14 +1,30 @@
-import { FC, ReactElement } from "react";
+import { ReactElement } from "react";
 
 interface Props {
-    items: (String | ReactElement)[];
+    items: (string | ReactElement)[];
+    id: string | undefined;
 }
 
-const DeckMenu = ({ items }: Props) => {
+function scroll(id: any) {
+    const element = document.querySelector(id);
+    element !== null &&
+        window.scrollTo({
+            top: element.offsetTop-140,
+            behavior: "smooth",
+        });
+}
+
+const DeckMenu = ({ items, id }: Props) => {
     return (
-        <div className={`deckMenu flex align-center`}>
-            {items.map((item: String | ReactElement) => (
-                <div className={`deckMenu-item ${typeof item === "string" ? "h-p" : ""}`}>{item}</div>
+        <div id={id} className={`deckMenu flex align-center`}>
+            {items.map((item: string | ReactElement) => (
+                <div
+                    id={id === "" ? "deckMenu_" + item.toString() : ""}
+                    onClick={() => scroll(`#${item}`)}
+                    className={`deckMenu-item ${typeof item === "string" ? "h-p" : ""}`}
+                >
+                    {item}
+                </div>
             ))}
         </div>
     );

@@ -1,9 +1,9 @@
 import { FC } from "react";
 import { ReactComponent as Metamask } from "../../assets/+metamask.svg";
 
-const Cards: FC = ({}) => {
+const Cards: FC = () => {
     return (
-        <div className={`cards mg-1`}>
+        <div className={`cards mg-1`} id="cards">
             <div className={`mg-1`}>
                 <h2>Cards</h2>
                 <div className={`flex`}>

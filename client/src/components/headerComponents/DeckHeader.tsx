@@ -44,13 +44,14 @@ const DeckHeader: FC = () => {
                                 <OpenseaButton className={`openseaBtn h-p`} />
                                 <Share className={`h-p`} />
                             </>,
-                            "CARDS",
-                            "SUPPLY",
-                            "STATS",
-                            "PRODUCT",
-                            "GALLERY",
-                            "ROADMAP",
+                            "cards",
+                            "supply",
+                            "stats",
+                            "product",
+                            "gallery",
+                            "roadmap",
                         ]}
+                        id="submenu"
                     />
                 </div>
             </div>

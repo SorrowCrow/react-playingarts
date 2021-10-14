@@ -14,6 +14,20 @@
         border-radius: 0.625rem;
         z-index: 2;
         position: relative;
+        max-height: 3.125rem;
+        .logoContainer {
+            margin: -0.625rem -1.25rem;
+            height: 200%;
+            transition: 0.25s;
+            .logo {
+                fill: white;
+                // position: absolute;
+                margin: 0 auto;
+                &:hover {
+                    fill-opacity: 0.8;
+                }
+            }
+        }
         .menu {
             .menuSvg {
                 margin-top: -0.625rem;
@@ -24,19 +38,51 @@
                 height: 4.375rem;
                 border-radius: 0.625rem 0 0 0.625rem;
             }
+            .currentDeck {
+                font-size: 1.25rem;
+                line-height: 1.25rem;
+                height: 200%;
+                transition: 0.25s;
+                div {
+                    height: 50%;
+                    margin-bottom: 20px;
+                }
+            }
+        }
+        .deckMenu {
+            height: 100%;
+            font-weight: 600;
+            font-size: 1.125rem;
+            line-height: 1.3125rem;
+            font-family: $default-font;
+            text-transform: uppercase;
+
+            color: rgba(255, 255, 255, 0.7);
+            .active {
+                color: rgba(255, 255, 255, 0.3);
+            }
+            &-item {
+                transition: 0.25s;
+                margin: 0 1.25rem;
+                &:hover {
+                    color: white;
+                }
+            }
         }
         .shop {
             border-radius: 6.25rem;
             background-color: white;
         }
     }
-    .sub-menu {
-        background: #181818;
-        border-radius: 0.625rem;
-        padding-top: 1.25rem;
+    .sub-menu-container {
         margin-top: -1.25rem;
+        border-radius: 0.625rem;
+    }
+    .sub-menu {
+        padding-top: 1.25rem;
         transition: 0.25s;
-        .activated {
+        background: #181818;
+        .activate {
             color: rgba(255, 255, 255, 0.3);
         }
         .items {
@@ -48,6 +94,10 @@
             .item {
                 line-height: 3.75rem;
                 text-align: center;
+                font-family: $default-font;
+                &:hover {
+                    color: white;
+                }
             }
         }
     }
