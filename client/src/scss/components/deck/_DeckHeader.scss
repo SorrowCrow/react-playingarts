@@ -7,37 +7,37 @@
 .DeckHeader {
     background-color: black;
     color: white;
-    padding-top: 16.25rem;
-    padding-bottom: 1.3125rem;
+    padding-top: 260px;
+    padding-bottom: 20px;
     .nft {
         color: rgba(255, 255, 255, 0.4);
-        font-size: 1.875rem;
-        line-height: 1.8125rem;
-        letter-spacing: -0.05rem;
+        font-size: 25px;
+        line-height: 30px;
+        letter-spacing: normal;
     }
     .description {
-        font-size: 1.875rem;
+        font-size: 30px;
         line-height: 150%;
         color: rgba(255, 255, 255, 0.8);
-        max-width: 63.75rem;
-        margin-top: 1.5625rem;
-        padding-bottom: 2.875rem;
-        margin-bottom: 1.875rem;
+        max-width: 1020px;
+        margin-top: 25px;
+        padding-bottom: 30px;
+        margin-bottom: 30px;
         border-bottom: 2px solid rgba(255, 255, 255, 0.1);
     }
     .deckMenu {
         flex-wrap: wrap;
         font-weight: 600;
-        font-size: 1.125rem;
-        line-height: 1.3125rem;
+        font-size: 18px;
+        line-height: 21px;
         color: rgba(255, 255, 255, 0.8);
         text-transform: uppercase;
         &-item {
-            margin-bottom: 1.875rem;
+            margin-bottom: 30px;
             display: flex;
-            margin-right: 2.5rem;
+            margin-right: 40px;
             .openseaBtn {
-                margin-right: 1.25rem;
+                margin-right: 20px;
             }
         }
     }
@@ -45,11 +45,11 @@
 .bg-daysleftCarousel {
     background: white;
     .daysleftCarousel {
-        height: 5rem;
+        height: 80px;
         z-index: 0;
         .fader {
             height: 100%;
-            width: 11.25rem;
+            width: 180px;
             position: absolute;
             background: linear-gradient(90deg, white 0%, rgba(252, 252, 252, 0) 100%);
             z-index: 1;
@@ -58,15 +58,15 @@
             right: 0;
         }
         .looped {
-            box-shadow: 0px 0.25rem 0.625rem 0 rgba(0, 0, 0, 0.05);
+            box-shadow: 0px 4px 10px 0 rgba(0, 0, 0, 0.05);
             height: 100%;
             .looped-item {
-                margin-right: 3.75rem;
+                margin-right: 60px;
                 width: max-content;
                 color: rgba(0, 0, 0, 0.4);
                 font-weight: 500;
-                font-size: 1.125rem;
-                line-height: 1.3125rem;
+                font-size: 18px;
+                line-height: 21px;
                 @keyframes looped {
                     100% {
                         transform: translateX(326px);

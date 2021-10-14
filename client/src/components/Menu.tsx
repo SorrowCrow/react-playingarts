@@ -90,7 +90,7 @@ const Menu: FC = () => {
                     <Logo className={`align-self-center logo h-100 relative`} />
                     <DeckMenu id="" items={["cards", "supply", "stats", "product", "gallery", "roadmap"]} />
                 </div>
-                <Shop className={`h-p shop`} fill={`purple`} />
+                <Shop className={`h-p shop`} fill={`#510eac`} />
             </div>
             <div className={`overflow-hidden sub-menu-container`}>
                 <div className={`flex content-center sub-menu relative`} id={`sub-menu`}>

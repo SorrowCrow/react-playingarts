@@ -1,11 +1,11 @@
 @mixin marginGutter($gutter) {
-    margin: 0 ($gutter * 6.5625rem);
+    margin: 0 ($gutter * 105px);
 }
 
 @mixin marginGutterLeft($gutter) {
-    margin-left: ($gutter * 6.5625rem);
+    margin-left: ($gutter * 105px);
 }
 
 @mixin paddingGutter($gutter) {
-    padding: 0 ($gutter * 6.5625rem);
+    padding: 0 ($gutter * 105px);
 }

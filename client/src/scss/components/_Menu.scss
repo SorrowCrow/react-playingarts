@@ -1,7 +1,7 @@
 .header {
-    margin-right: 0.625rem;
-    margin-left: 0.625rem;
-    margin-top: 0.625rem;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 10px;
     top: 0;
     right: 0;
     left: 0;
@@ -10,13 +10,13 @@
     z-index: 1;
     .main-menu {
         background-color: $purple;
-        padding: 0.625rem 1.25rem;
-        border-radius: 0.625rem;
+        padding: 10px 20px;
+        border-radius: 10px;
         z-index: 2;
         position: relative;
-        max-height: 3.125rem;
+        max-height: 50px;
         .logoContainer {
-            margin: -0.625rem -1.25rem;
+            margin: -10px -20px;
             height: 200%;
             transition: 0.25s;
             .logo {
@@ -30,30 +30,32 @@
         }
         .menu {
             .menuSvg {
-                margin-top: -0.625rem;
-                margin-bottom: -0.625rem;
-                margin-left: -1.3rem;
-                margin-right: 1.5rem;
-                width: 4.375rem;
-                height: 4.375rem;
-                border-radius: 0.625rem 0 0 0.625rem;
+                margin-top: -10px;
+                margin-bottom: -10px;
+                margin-left: -20.8px;
+                margin-right: 24px;
+                width: 70px;
+                height: 70px;
+                border-radius: 10px 0 0 10px;
             }
             .currentDeck {
-                font-size: 1.25rem;
-                line-height: 1.25rem;
+                font-size: 20px;
+                line-height: 20px;
                 height: 200%;
                 transition: 0.25s;
                 div {
+                    text-transform: uppercase;
                     height: 50%;
                     margin-bottom: 20px;
+                    margin-top: 3px;
                 }
             }
         }
         .deckMenu {
             height: 100%;
             font-weight: 600;
-            font-size: 1.125rem;
-            line-height: 1.3125rem;
+            font-size: 18px;
+            line-height: 21px;
             font-family: $default-font;
             text-transform: uppercase;
 
@@ -63,36 +65,36 @@
             }
             &-item {
                 transition: 0.25s;
-                margin: 0 1.25rem;
+                margin: 0 20px;
                 &:hover {
                     color: white;
                 }
             }
         }
         .shop {
-            border-radius: 6.25rem;
+            border-radius: 100px;
             background-color: white;
         }
     }
     .sub-menu-container {
-        margin-top: -1.25rem;
-        border-radius: 0.625rem;
+        margin-top: -20px;
+        border-radius: 10px;
     }
     .sub-menu {
-        padding-top: 1.25rem;
+        padding-top: 20px;
         transition: 0.25s;
         background: #181818;
         .activate {
             color: rgba(255, 255, 255, 0.3);
         }
         .items {
-            width: 44.375rem;
+            width: 710px;
             justify-content: space-between;
             color: rgba(255, 255, 255, 0.7);
             font-weight: 600;
-            font-size: 1.125rem;
+            font-size: 18px;
             .item {
-                line-height: 3.75rem;
+                line-height: 60px;
                 text-align: center;
                 font-family: $default-font;
                 &:hover {

@@ -35,8 +35,8 @@ const DeckHeader: FC = () => {
                         {decks[0].name === "Crypto Edition" && <div className={`nft`}>NFT</div>}
                     </h1>
                     <div className={`description`}>
-                        A deck of playing cards featuring works of 55 leading artists.
-                        <br /> Unique digital art collectibles living on the Ethereum blockchain.
+                        A deck of playing cards featuring works of 55 leading artists. Unique digital art collectibles
+                        living on the Ethereum blockchain.
                     </div>
                     <DeckMenu
                         items={[
