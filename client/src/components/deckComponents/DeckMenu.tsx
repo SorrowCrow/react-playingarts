@@ -18,12 +18,13 @@ const DeckMenu = ({ items, id }: Props) => {
     return (
         <div id={id} className={`deckMenu flex align-center`}>
             {items.map((item: string | ReactElement) => (
-                <div
+                <a
+                    href={`#${item}`}
                     id={id === "" ? "deckMenu_" + item.toString() : ""}
                     className={`deckMenu-item ${typeof item === "string" ? "h-p" : ""}`}
                 >
                     {item}
-                </div>
+                </a>
             ))}
         </div>
     );
