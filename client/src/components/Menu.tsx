@@ -36,18 +36,38 @@ const Menu: FC = () => {
         const currentdeck = document.getElementById("currentdeck");
         const cardsElement = document.getElementById("cards");
         const deckMenu_cards = document.getElementById("deckMenu_cards");
-        console.log(submenuElement?.offsetTop);
+        let submenuSet = false;
         function listener() {
-            if (cardsElement?.offsetTop !== undefined && cardsElement?.offsetTop - (window.pageYOffset + 141) < 0) {
+            if (
+                !deckMenu_cards?.classList.contains("active") &&
+                cardsElement?.offsetTop !== undefined &&
+                cardsElement?.offsetTop - (window.pageYOffset + 141) < 0
+            ) {
                 deckMenu_cards !== null && deckMenu_cards.classList.add("active");
-            } else if (submenuElement?.offsetTop !== undefined && submenuElement?.offsetTop - window.pageYOffset < 0) {
-                decks[0].name && setplayingarts(decks[0].name);
-                logo !== null && (logo.style.marginTop = "-5rem");
-                currentdeck !== null && (currentdeck.style.top = "-4.375rem");
+            } else if (
+                deckMenu_cards?.classList.contains("active") &&
+                cardsElement?.offsetTop !== undefined &&
+                cardsElement?.offsetTop - (window.pageYOffset + 141) > 0
+            ) {
                 deckMenu_cards !== null && deckMenu_cards.classList.remove("active");
-            } else if (submenuElement?.offsetTop !== undefined && submenuElement?.offsetTop - window.pageYOffset > 0) {
+            }
+            if (
+                !submenuSet &&
+                submenuElement?.offsetTop !== undefined &&
+                submenuElement?.offsetTop - window.pageYOffset < 0
+            ) {
+                decks[0].name && setplayingarts(decks[0].name);
+                logo !== null && (logo.style.marginTop = "-80px");
+                currentdeck !== null && (currentdeck.style.top = "-70px");
+                submenuSet = !submenuSet;
+            } else if (
+                submenuSet &&
+                submenuElement?.offsetTop !== undefined &&
+                submenuElement?.offsetTop - window.pageYOffset > 0
+            ) {
                 logo !== null && (logo.style.marginTop = "");
                 currentdeck !== null && (currentdeck.style.top = "0");
+                submenuSet = !submenuSet;
             }
         }
         window.addEventListener("scroll", listener, false);
