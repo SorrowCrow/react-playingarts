@@ -19,8 +19,7 @@
         "@types/node": "^16.11.1",
         "@types/react": "^17.0.28",
         "@types/react-dom": "^17.0.9",
-        "cssnano": "^5.0.8",
-        "sass": "^1.42.1",
+        "sass": "^1.43.2",
         "ts-node": "^10.3.0"
     },
     "scripts": {
