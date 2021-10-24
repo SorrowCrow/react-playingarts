@@ -9,10 +9,11 @@ const Menu = React.lazy(() => import("../components/Menu"));
 
 const Deck = dynamic(() => import("./[Deck]"));
 import DeckContext from "../components/DeckContext";
+import { GetStaticProps } from "next";
 // import Menu from "../components/Menu";
 // import Deck from "../components/Crypto";
 
-function Index() {
+function Index({}) {
     const [state, setstate] = useState(
         <div
             id="loader"
@@ -61,8 +62,28 @@ function Index() {
     return (
         <>
             {state}
+            {/* <Menu /> */}
         </>
     );
 }
 
 export default Index;
+
+// export const getStaticProps: GetStaticProps = async ({ params }) => {
+//     const decks = require("../data/Decks.json");
+
+//     let deck = decks.filter((item) => {
+//         return item.Deck === params.Deck && item.Deck[0];
+//     });
+
+//     const cards = require(`../data/Decks/Deck${deck[0].id}.json`);
+
+//     return {
+//         props: {
+//             deck: { name: "", Deck: "" },
+//         },
+//         // Re-generate the post at most once per second
+//         // if a request comes in
+//         revalidate: 1,
+//     };
+// };

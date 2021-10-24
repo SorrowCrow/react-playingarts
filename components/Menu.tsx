@@ -11,7 +11,6 @@ import Link from "next/link";
 const Menu = ({ deck }) => {
     const deckId = deck.id;
     const setdeckId = useDeckContext().setdeckId;
-    const [playingarts, setplayingarts] = useState("PLAYING ARTS");
 
     useEffect(() => {
         const logo = document.getElementById("logo");
@@ -85,7 +84,6 @@ const Menu = ({ deck }) => {
                 submenuElement?.offsetTop !== undefined &&
                 submenuElement?.offsetTop - window.pageYOffset < 0
             ) {
-                deck.name && setplayingarts(deck.name);
                 logo !== null && (logo.style.marginTop = "-80px");
                 currentdeck !== null && (currentdeck.style.top = "-70px");
                 submenuSet = !submenuSet;
@@ -135,7 +133,7 @@ const Menu = ({ deck }) => {
                             </a>
                             <div className={`currentDeck relative`} id="currentdeck">
                                 <div className={`flex align-center company`}>PLAYING ARTS</div>
-                                <div className={`flex align-center deck`}>{playingarts}</div>
+                                <div className={`flex align-center deck`}>{deck.name}</div>
                             </div>
                         </div>
                         <div
