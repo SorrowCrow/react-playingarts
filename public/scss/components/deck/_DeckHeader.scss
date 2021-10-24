@@ -1,0 +1,141 @@
+// @media only screen and (max-width: $md-breakpoint) {
+//     .DeckHeader h1 {
+//         width: min-content;
+//     }
+// }
+.videoCover {
+    background-color: black;
+    top: 0;
+    opacity: 0.9;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+#background-video {
+    top: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    object-fit: cover;
+    z-index: -2;
+}
+a {
+    text-decoration: inherit;
+    color: inherit;
+}
+.DeckHeader {
+    opacity: 1;
+    color: white;
+    padding-top: 375px;
+    padding-bottom: 20px;
+    .content {
+        max-width: 1195px;
+        @include paddingGutter(1);
+    }
+    .nft {
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 25px;
+        line-height: 30px;
+        letter-spacing: normal;
+    }
+    .description {
+        font-size: 30px;
+        line-height: 150%;
+        color: rgba(255, 255, 255, 0.8);
+        margin-top: 25px;
+        padding-bottom: 30px;
+        margin-bottom: 30px;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    }
+    .deckMenu {
+        flex-wrap: wrap;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 21px;
+        color: rgba(255, 255, 255, 0.8);
+        text-transform: uppercase;
+        &-item {
+            margin-bottom: 30px;
+            display: flex;
+            margin-right: 40px;
+            &:last-child {
+                margin-right: 0;
+            }
+            &:hover {
+                color: white;
+            }
+            .openseaBtn {
+                margin-right: 20px;
+                text-transform: uppercase;
+                background-color: $purple;
+                border-radius: 100px;
+                padding-right: 25.68px;
+                padding-left: 15px;
+                font-weight: 600;
+                font-size: 18px;
+                line-height: 21px;
+                padding-top: 9px;
+                padding-bottom: 9px;
+                height: fit-content;
+                color: rgba(255, 255, 255, 0.9);
+                svg {
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+}
+.bg-daysleftCarousel {
+    background: white;
+    .daysleftCarousel {
+        height: 80px;
+        z-index: 0;
+        .fader {
+            height: 100%;
+            width: 180px;
+            position: absolute;
+            background: linear-gradient(90deg, white 0%, rgba(252, 252, 252, 0) 100%);
+            z-index: 1;
+        }
+        .tr-180 {
+            right: 0;
+        }
+        .looped {
+            box-shadow: 0px 4px 10px 0 rgba(0, 0, 0, 0.05);
+            height: 100%;
+            .looped-item {
+                margin-right: 60px;
+                width: max-content;
+                color: rgba(0, 0, 0, 0.4);
+                font-weight: 500;
+                font-size: 18px;
+                line-height: 21px;
+                @keyframes looped {
+                    100% {
+                        transform: translateX(326px);
+                    }
+                }
+                animation: 5s linear infinite looped;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: $md-breakpoint) {
+    .DeckHeader .content {
+        @include paddingGutter(2);
+    }
+}
+
+@media only screen and (min-width: $lg-breakpoint) {
+    .DeckHeader .content {
+        @include paddingGutter(3);
+    }
+}
+
+@media only screen and (min-width: $xl-breakpoint) {
+    .DeckHeader .content {
+        padding: 0;
+    }
+}

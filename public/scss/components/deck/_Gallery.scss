@@ -1,0 +1,54 @@
+.gallery {
+    padding-bottom: 1000px;
+    &-header {
+        @include marginGutter(1);
+        &-content {
+            margin: 0 auto;
+            padding-bottom: 20px;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.07);
+            max-width: 1230px;
+            .insta {
+                background: linear-gradient(45deg, #c13584 50%, #fcaf45 100%);
+                border-radius: 100px;
+                padding: 9px 25px 9px 15px;
+                font-weight: 600;
+                font-size: 18px;
+                line-height: 21px;
+                color: rgba(255, 255, 255, 0.9);
+                text-transform: uppercase;
+                height: fit-content;
+                svg {
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+    .InfiniteCarousel {
+        margin-top: 60px;
+        padding-bottom: 1000px;
+    }
+}
+
+@media only screen and (min-width: $md-breakpoint) {
+    .gallery {
+        &-header {
+            @include marginGutter(2);
+        }
+    }
+}
+
+@media only screen and (min-width: $lg-breakpoint) {
+    .gallery {
+        &-header {
+            @include marginGutter(3);
+        }
+    }
+}
+
+@media only screen and (min-width: $xl-breakpoint) {
+    .gallery {
+        &-header {
+            @include marginGutter(4);
+        }
+    }
+}

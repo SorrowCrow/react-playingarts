@@ -1,0 +1,86 @@
+.supply {
+    @include marginGutter(1);
+    margin-top: 153px;
+    margin-bottom: 116px;
+    .content {
+        margin: -25px;
+    }
+
+    .total {
+        color: #0a0a0a;
+        margin-top: 36px;
+    }
+    .augmentedReality {
+        background: #fdf6f0;
+        background-image: url(../../../assets/phonehold.png);
+        // background-position-y: 86px;
+        background-repeat: no-repeat;
+        background-position: bottom right;
+        // background-position-x: 378px;
+        p {
+            font-size: 22px;
+            line-height: 150%;
+            max-width: 295px;
+        }
+        &-button {
+            color: white;
+            background: #510eac;
+            border-radius: 100px;
+            padding: 15px 25px 14px;
+            max-width: 106px;
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 21px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 50px;
+        }
+        .symbols {
+            width: 84px;
+        }
+    }
+
+    &-item {
+        background-color: white;
+        border-radius: 20px;
+        padding: 50px;
+        color: rgba(10, 10, 10, 0.5);
+        margin: 15px;
+        width: 100%;
+        max-width: 815px;
+        .nftSupply-item {
+            margin-top: 40px;
+            .line {
+                background: #eeeeee;
+                border-radius: 100px;
+                height: 5px;
+                margin-top: 11px;
+                div {
+                    background: linear-gradient(90deg, #510eac 0%, #af00cb 100%);
+                    border-radius: 100px;
+                    width: 70%;
+                    height: 5px;
+                }
+            }
+        }
+        svg {
+            margin-left: 5px;
+        }
+    }
+}
+
+@media only screen and (min-width: $md-breakpoint) {
+    .supply {
+        &-item {
+            width: 500px;
+        }
+        .augmentedReality {
+            background-size: 600px 414px;
+            background-position-x: 136px;
+            background-position-y: 86px;
+            &-button {
+                margin-bottom: 114px;
+            }
+        }
+    }
+}
