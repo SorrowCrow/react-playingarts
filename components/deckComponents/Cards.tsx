@@ -94,60 +94,21 @@ const Cards = ({ cards, deck }) => {
 
     useEffect(() => {
         if (cardsData.position <= 0) return;
-        const controller = new AbortController();
-        const signal = controller.signal;
 
         const currentCard = cardsData.oldindex;
         setcardsData((prevstate) => ({
             ...prevstate,
             quote: "",
         }));
-        setloading(true);
-        fetch(`/data/Decks/Deck${deck.id}.json`, {
-            signal,
-        })
-            .then((res) => {
-                setloading(false);
-                return res.json();
-            })
-            .then((res) => {
-                const quotetext = res[currentCard].quote;
 
-                setTimeout(() => {
-                    setcardsData((prevstate) => ({
-                        ...prevstate,
-                        quote: `"${quotetext}"`,
-                        currentCard: currentCard,
-                    }));
-                }, 250);
-            });
-        // fetch(
-        //     "/quotes?" +
-        //         new URLSearchParams({
-        //             deckid: deck.id.toString(),
-        //             index: cardsData.oldindex.toString(),
-        //         }),
-        //     {
-        //         signal,
-        //     }
-        // )
-        //     .then((res) => {
-        //         setloading(false);
-        //         return res.json();
-        //     })
-        //     .then((res) => {
-        //         const { quotetext } = res;
-        //         setTimeout(() => {
-        //             setcardsData((prevstate) => ({
-        //                 ...prevstate,
-        //                 quote: `"${quotetext}"`,
-        //                 currentCard: currentCard,
-        //             }));
-        //         }, 250);
-        //     });
-        return () => {
-            controller.abort();
-        };
+        setTimeout(() => {
+            setcardsData((prevstate) => ({
+                ...prevstate,
+                author: cards[cardsData.oldindex].author,
+                quote: `"${cards[cardsData.oldindex].quote}"`,
+                currentCard: currentCard,
+            }));
+        }, 250);
     }, [cardsData.oldindex]);
 
     let arrows = [];

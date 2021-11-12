@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useCardsContext } from "../CardsContext";
 import Arrow from "../../../public/assets/arrow.svg";
 import Link from "next/link";
@@ -29,7 +29,6 @@ const Quote = ({ arrows, index, deck }) => {
         if (cardsData.quotenumb != index || cardsData.position <= 0) return;
         setauthor(cardsData.author);
         if (cardsData.oldindex === cardsData.currentCard) setquote(cardsData.quote);
-        else setquote("");
 
         setTimeout(function () {
             setheight(document.getElementById(`quoteContent${index}`).clientHeight + "px");
@@ -63,29 +62,19 @@ const Quote = ({ arrows, index, deck }) => {
                         }
                     }
                 >
-                    <div className={`quote-content-cover`}>
-                        <div className={`flex content-between`}>
-                            <div className={`quote-content-quote relative`}>
-                                <span className={`fadeOut ${quote !== "" && "fadeIn"}`}>{quote}</span>
+                    <div className={`quote-content-cover ${cardsData.quote === "" ? "fadeOut" : "fadeIn"}`}>
+                        <div className={`flex`}>
+                            <div className={`quote-content-quote relative `}>
+                                <span>{quote}</span>
                                 <Link href={`${deck.Deck}/${cardsData.currentCard}`}>
-                                    <div className={`h-p fadeOut flex align-center ${quote !== "" && "fadeIn"}`}>
+                                    <div className={`h-p flex align-center `}>
                                         Read More <Arrow />
                                     </div>
                                 </Link>
-                                <div
-                                    className={`${
-                                        quote === "" ? "fadeIn" : "fadeOut"
-                                    } skeleton-text-container absolute`}
-                                >
-                                    <div className={`skeleton-text`}></div>
-                                    <div className={`skeleton-text`}></div>
-                                    <div className={`skeleton-text`}></div>
-                                    <div className={`skeleton-text`}></div>
-                                </div>
                             </div>
                             <div className={`quote-content-author`}>
                                 <Image src="/assets/victorvector.png" width="75" height="75" />
-                                <h5 className={``}>{author}</h5>
+                                <h5>{author}</h5>
                             </div>
                         </div>
                     </div>

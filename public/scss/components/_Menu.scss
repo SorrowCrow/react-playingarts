@@ -2,14 +2,15 @@
     top: 10px;
     right: 10px;
     left: 10px;
-    color: white;
+    color: $dark_gray;
     font-family: $aldrich-font;
     z-index: 2;
     &-content {
         max-width: 1860px;
     }
     .main-menu {
-        background-color: $purple;
+        // background-color: $purple;
+        // background: linear-gradient(90deg, #58CDFF 0%, #C77BFF 100%);
         padding: 10px 20px;
         border-radius: 10px;
         z-index: 2;
@@ -23,7 +24,6 @@
             height: 200%;
             transition: 0.25s;
             .logo {
-                fill: white;
                 // position: absolute;
                 margin: 0 auto;
                 &:hover {
@@ -62,7 +62,9 @@
             font-family: $default-font;
             text-transform: uppercase;
 
-            color: rgba(255, 255, 255, 0.7);
+            // color: rgba(255, 255, 255, 0.7);
+            color: rgba(0, 0, 0, 0.7);
+
             .active {
                 color: rgba(255, 255, 255, 0.3);
             }
@@ -74,12 +76,14 @@
                 }
             }
         }
+
         .shop {
             border-radius: 100px;
-            background-color: white;
-            color: $purple;
-            fill: $purple;
-            text-transform: uppercase;
+            div {
+                text-transform: uppercase;
+                background-clip: text;
+                color: transparent;
+            }
             z-index: 1;
             font-family: $default-font;
             font-weight: 600;
@@ -102,7 +106,7 @@
     .sub-menu {
         padding-top: 20px;
         transition: 0.25s;
-        background: #181818;
+        background: $dark_gray;
         .activate {
             color: rgba(255, 255, 255, 0.3);
         }

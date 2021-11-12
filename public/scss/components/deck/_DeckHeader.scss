@@ -68,7 +68,6 @@ a {
             .openseaBtn {
                 margin-right: 20px;
                 text-transform: uppercase;
-                background-color: $purple;
                 border-radius: 100px;
                 padding-right: 25.68px;
                 padding-left: 15px;
@@ -78,7 +77,8 @@ a {
                 padding-top: 9px;
                 padding-bottom: 9px;
                 height: fit-content;
-                color: rgba(255, 255, 255, 0.9);
+                background: linear-gradient(90.19deg, #82a7f8 14%, #a6fbf6 50.04%, #cdb0ff 86.07%);
+                color: black;
                 svg {
                     margin-right: 10px;
                 }

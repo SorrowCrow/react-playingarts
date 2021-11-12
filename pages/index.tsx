@@ -1,17 +1,6 @@
-import dynamic from "next/dynamic";
-
-import React, { Suspense, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Logo from "../public/assets/logo.svg";
 import Diamonds from "../public/assets/diamonds.svg";
-
-// const DeckContext = dynamic(() => import("../components/DeckContext"));
-const Menu = React.lazy(() => import("../components/Menu"));
-
-const Deck = dynamic(() => import("./[Deck]"));
-import DeckContext from "../components/DeckContext";
-import { GetStaticProps } from "next";
-// import Menu from "../components/Menu";
-// import Deck from "../components/Crypto";
 
 function Index({}) {
     const [state, setstate] = useState(
@@ -42,7 +31,6 @@ function Index({}) {
             >
                 <Logo fill="white" style={{ margin: "auto" }} />
             </div>
-            {/* <div style={{ position: "fixed", left: "-50px", fontFamily: "aldrich" }}>.</div> */}
             <Diamonds style={{ margin: "auto", animation: "2s linear infinite loader" }} />
         </div>
     );

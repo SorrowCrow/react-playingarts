@@ -58,7 +58,13 @@ function Deck({ deck, cards }) {
     return (
         <>
             {state}
-            <Menu deck={deck} />
+            <Menu
+                deck={deck}
+                menustyle={{ background: "linear-gradient(90deg, #58CDFF 0%, #C77BFF 100%)" }}
+                logomenubuttonfill={{ fill: "#181818" }}
+                logocolor="#181818"
+                metamaskbackground={"#181818"}
+            />
             <DeckHeader deck={deck} />
             <CardsContext>
                 <Cards cards={cards} deck={deck} />

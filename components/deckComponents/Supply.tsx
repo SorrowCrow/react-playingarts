@@ -1,12 +1,8 @@
-import { FC } from "react";
-import { useDeckContext } from "../DeckContext";
 import NftSuppyItem from "./SupplyComponents/NftSupplyItem";
 import Android from "../../public/assets/android.svg";
 import Apple from "../../public/assets/apple.svg";
 
 const Supply = ({ deck }) => {
-    const deckId = useDeckContext().deckId;
-    const decks = useDeckContext().decks;
     return (
         <div className={`supply`} id="supply">
             <div className={`content flex flex-wrap content-center`}>

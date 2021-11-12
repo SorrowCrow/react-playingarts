@@ -1,10 +1,7 @@
-// import Image from "next/image";
-import React, { Suspense, useRef } from "react";
+import React from "react";
 import { useEffect, useState } from "react";
-// const Image = React.lazy(() => import("./Image"));
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import Diamonds from "../../../public/assets/diamonds.svg";
-import Victorvector from "../../../public/assets/victorvector.png";
 import { useCardsContext, useSetCardsContext } from "../CardsContext";
 
 const Card = ({ item, index }) => {
@@ -28,13 +25,6 @@ const Card = ({ item, index }) => {
                 i++;
             }
 
-            // setcardsData((prevdata) => ({
-            //     ...prevdata,
-            //     rowlength: i,
-            //     oldindex: index !== cardsData.oldindex ? index : cardsData.oldindex,
-            //     author: item.author,
-            // }));
-
             if (cardsData.rowlength !== i) {
                 setcardsData((prevdata) => ({ ...prevdata, rowlength: i, tempindex: index }));
             } else {
@@ -52,9 +42,9 @@ const Card = ({ item, index }) => {
                         setcardsData((prevdata) => ({ ...prevdata, position: b + 1 }));
                     }
                 }
-                index !== cardsData.oldindex && setcardsData((prevdata) => ({ ...prevdata, oldindex: index, tempindex: index }));
+                index !== cardsData.oldindex &&
+                    setcardsData((prevdata) => ({ ...prevdata, oldindex: index, tempindex: index }));
             }
-            setcardsData((prevdata) => ({ ...prevdata, author: item.author }));
         }
     }, [hover]);
 
@@ -86,7 +76,6 @@ const Card = ({ item, index }) => {
                                 zIndex: 1,
                             }}
                         >
-                            {/* <div style={{ position: "fixed", left: "-50px", fontFamily: "aldrich" }}>.</div> */}
                             <Diamonds style={{ margin: "auto", animation: "2s linear infinite loader" }} />
                         </div>
                     )}

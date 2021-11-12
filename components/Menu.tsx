@@ -1,16 +1,20 @@
-import { FC, useEffect, useState } from "react";
+import { useEffect } from "react";
 import Logo from "../public/assets/logo.svg";
 import MenuSvg from "../public/assets/menu.svg";
-import Bag from "../public/assets/bag.svg";
 import DeckMenu from "./deckComponents/DeckMenu";
-import { useDeckContext } from "./DeckContext";
 import React from "react";
-import Deck from "../pages/[Deck]";
+import Plus from "../public/assets/plus2.svg";
 import Link from "next/link";
 
-const Menu = ({ deck = undefined }) => {
+const Menu = ({
+    deck = undefined,
+    menustyle,
+    logomenubuttonfill = { fill: "white" },
+    logocolor = "white",
+    metamasktextclass = "ethBackground",
+    metamaskbackground = "black",
+}) => {
     const deckId = deck && deck.id;
-    const setdeckId = deck && useDeckContext().setdeckId;
 
     useEffect(() => {
         if (!deck) return;
@@ -115,17 +119,17 @@ const Menu = ({ deck = undefined }) => {
         <>
             <header className={`header fixed `}>
                 <div className={`header-content overflow-hidden relative`}>
-                    <div className={`flex content-between main-menu overflow-hidden`}>
+                    <div className={`flex content-between main-menu overflow-hidden`} style={menustyle}>
                         <div className={`flex menu`}>
                             <a href="" className={`h-p`}>
                                 <MenuSvg
                                     className="menuSvg relative align-self-center"
                                     onMouseLeave={menuOut}
                                     onMouseEnter={menuHover}
-                                    fill={`white`}
+                                    style={logomenubuttonfill}
                                 />
                             </a>
-                            <div className={`currentDeck relative`} id="currentdeck">
+                            <div className={`currentDeck relative`} id="currentdeck" style={{ color: logocolor }}>
                                 <div className={`flex align-center company`}>PLAYING ARTS</div>
                                 {deck && <div className={`flex align-center deck`}>{deck.name}</div>}
                             </div>
@@ -135,7 +139,7 @@ const Menu = ({ deck = undefined }) => {
                             id="logo"
                         >
                             <div className={`h-100 flex`}>
-                                <Logo className={`align-self-center logo`} />
+                                <Logo style={logomenubuttonfill} className={`align-self-center logo`} />
                             </div>
                             <DeckMenu
                                 id=""
@@ -143,10 +147,10 @@ const Menu = ({ deck = undefined }) => {
                                 onClick={true}
                             />
                         </div>
-                        <a href="" className={`shop h-p align-center flex`}>
+                        <a href="" style={{ background: metamaskbackground }} className={`shop h-p align-center flex`}>
                             {/* <Shop className={`h-p shop`} fill={`#510eac`} /> */}
-                            <Bag />
-                            shop
+                            <Plus />
+                            <div className={`flex ${metamasktextclass}`}>metamask</div>
                         </a>
                     </div>
                     {deck && (

@@ -1,5 +1,4 @@
 import { FC, useEffect, useState } from "react";
-import { useDeckContext } from "../DeckContext";
 import OpenseaIcon from "../../public/assets/opensea-icon.svg";
 import Share from "../../public/assets/share.svg";
 import DeckMenu from "./DeckMenu";
@@ -15,8 +14,6 @@ interface Props {
 }
 
 const DeckHeader = ({ deck }) => {
-    // const decks = useDeckContext().decks;
-    // const deckId = useDeckContext().deckId;
     const [width, setWindowWidth] = useState(0);
 
     useEffect(() => {
@@ -91,9 +88,9 @@ const DeckHeader = ({ deck }) => {
                         items={[
                             <>
                                 {deck.id === 6 && (
-                                    <a href="" className={`openseaBtn h-p align-center flex`}>
+                                    <a href="" className={`openseaBtn eth h-p align-center flex`}>
                                         <OpenseaIcon />
-                                        nft collection
+                                        <div>nft collection</div>
                                     </a>
                                 )}
                                 <a href="">

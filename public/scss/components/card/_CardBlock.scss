@@ -1,0 +1,115 @@
+.cardBlock {
+    background: black;
+    width: 100%;
+    &-cardInfo {
+        padding-top: 140px;
+        @include marginGutter(2);
+        &-image {
+            img {
+                border-radius: 15px;
+                width: 370px;
+                height: 520px;
+            }
+        }
+        &-cardText {
+            width: 495px;
+            h2 {
+                color: white;
+            }
+            .location {
+                font-size: 20px;
+                line-height: 20px;
+                text-transform: uppercase;
+                color: rgba(255, 255, 255, 0.4);
+                font-family: $aldrich-font;
+                margin-top: 20px;
+                margin-bottom: 30px;
+            }
+            .line {
+                border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+            }
+            .nft-info {
+                margin-top: 30px;
+                margin-bottom: 156px;
+                .price {
+                    font-family: $aldrich-font;
+                    font-size: 30px;
+                    line-height: 29px;
+                    letter-spacing: -0.05em;
+                    color: rgba(255, 255, 255, 0.9);
+                    svg {
+                        margin-left: 6px;
+                    }
+                }
+                .ethBackground {
+                    border-radius: 100px;
+                    padding-right: 25px;
+                    text-transform: uppercase;
+                    font-weight: 600;
+                    padding-top: 9px;
+                    padding-bottom: 9px;
+                    margin-right: 20px;
+                    svg {
+                        margin-left: 15px;
+                        margin-right: 10px;
+                    }
+                }
+            }
+            .quote {
+                font-size: 30px;
+                line-height: 150%;
+                color: rgba(234, 234, 234, 0.5);
+                margin-bottom: 26px;
+                div {
+                    font-weight: 500;
+                    font-size: 18px;
+                    line-height: 21px;
+                    margin-top: 30px;
+                    svg {
+                        fill: rgba(234, 234, 234, 0.5);
+                    }
+                }
+            }
+            .authorsLine {
+                border-top: 2px solid rgba(255, 255, 255, 0.07);
+                display: flex;
+            }
+            .authorsArrow {
+                width: 11.5px;
+                height: 11.5px;
+                border-bottom: 2px solid rgba(255, 255, 255, 0.07);
+                border-right: 2px solid rgba(255, 255, 255, 0.07);
+                background: black;
+                margin-top: 0.5px;
+                margin-left: 105px;
+                transform: rotate(45deg);
+                align-self: center;
+            }
+            .authorInfo {
+                margin-top: 37px;
+                span {
+                    margin-right: 30px;
+                }
+                .bio {
+                    h5 {
+                        color: white;
+                    }
+                    .status {
+                        margin-top: 10px;
+                        margin-bottom: 10px;
+                        font-size: 22px;
+                        line-height: 150%;
+                        color: rgba(234, 234, 234, 0.5);
+                    }
+                    a {
+                        margin-top: 30px;
+                        margin-right: 20px;
+                    }
+                    a:last-child {
+                        margin-right: 0;
+                    }
+                }
+            }
+        }
+    }
+}

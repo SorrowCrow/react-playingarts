@@ -1,6 +1,8 @@
 //color
 $lightBlue: #a5f7fc;
 $purple: #510eac;
+$dark_gray: #181818;
+$eth: linear-gradient(90.19deg, #82a7f8 14%, #a6fbf6 50.04%, #cdb0ff 86.07%);
 
 //fonts
 $default-font: "Work Sans", sans-serif;
@@ -28,3 +30,7 @@ $xl-breakpoint: 2070px;
 $transition-fast: 0.25s;
 $transition: 0.5s;
 $transition-slow: 1s;
+
+.ethBackground {
+    background: $eth;
+}

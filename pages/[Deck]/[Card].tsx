@@ -3,8 +3,9 @@ import React, { useEffect, useState } from "react";
 import Logo from "../../public/assets/logo.svg";
 import Diamonds from "../../public/assets/diamonds.svg";
 import Menu from "../../components/Menu";
+import Header from "../../components/cardsComponents/Header";
 
-function Card({ deck, cards }) {
+function Card({ deck, card }) {
     const [state, setstate] = useState(
         <div
             id="loader"
@@ -53,20 +54,27 @@ function Card({ deck, cards }) {
     return (
         <>
             {state}
-            <Menu />
+            <Menu
+                menustyle={{ background: "#181818" }}
+                logomenubuttonfill={{ fill: "rgba(234, 234, 234, 0.5)" }}
+                logocolor="rgba(234, 234, 234, 0.5)"
+            />
+            <div className="cardBlock">
+                <Header deck={deck} card={card} />
+            </div>
         </>
     );
 }
 
 export default Card;
 
-const decks = require("../../public/data/Decks.json");
+import decks from "../../public/data/Decks.json";
 
 export const getStaticPaths: GetStaticPaths = async () => {
     let paths = [];
     decks.map((deck) => {
         const cards = require(`../../public/data/Decks/Deck${deck.id}.json`);
-        cards.map((card, index) => {
+        cards.map((card: any, index: number) => {
             paths.push({
                 params: { Deck: deck.Deck, Card: index.toString() },
             });
@@ -83,14 +91,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     let deck = decks.filter((item) => {
         return item.Deck === params.Deck && item.Deck[0];
     });
-
     const cards = require(`../../public/data/Decks/Deck${deck[0].id}.json`);
-    console.log(params);
 
     return {
         props: {
             deck: deck[0],
-            cards: cards,
+            card: cards[Number(params.Card)],
         },
     };
 };
