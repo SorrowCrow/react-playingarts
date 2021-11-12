@@ -1,15 +1,10 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import React, { useEffect, useState } from "react";
-import Cards from "../components/deckComponents/Cards";
-import DeckHeader from "../components/deckComponents/DeckHeader";
-import Supply from "../components/deckComponents/Supply";
-import Logo from "../public/assets/logo.svg";
-import Diamonds from "../public/assets/diamonds.svg";
-import Menu from "../components/Menu";
-import Gallery from "../components/deckComponents/Gallery";
-import CardsContext from "../components/deckComponents/CardsContext";
+import Logo from "../../public/assets/logo.svg";
+import Diamonds from "../../public/assets/diamonds.svg";
+import Menu from "../../components/Menu";
 
-function Deck({ deck, cards }) {
+function Card({ deck, cards }) {
     const [state, setstate] = useState(
         <div
             id="loader"
@@ -58,25 +53,25 @@ function Deck({ deck, cards }) {
     return (
         <>
             {state}
-            <Menu deck={deck} />
-            <DeckHeader deck={deck} />
-            <CardsContext>
-                <Cards cards={cards} deck={deck} />
-            </CardsContext>
-            <Supply deck={deck} />
-            <Gallery />
+            <Menu />
         </>
     );
 }
 
-export default Deck;
+export default Card;
 
-const decks = require("../public/data/Decks.json");
+const decks = require("../../public/data/Decks.json");
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    const paths = decks.map((deck) => ({
-        params: { Deck: deck.Deck },
-    }));
+    let paths = [];
+    decks.map((deck) => {
+        const cards = require(`../../public/data/Decks/Deck${deck.id}.json`);
+        cards.map((card, index) => {
+            paths.push({
+                params: { Deck: deck.Deck, Card: index.toString() },
+            });
+        });
+    });
 
     return {
         paths,
@@ -89,7 +84,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         return item.Deck === params.Deck && item.Deck[0];
     });
 
-    const cards = require(`../public/data/Decks/Deck${deck[0].id}.json`);
+    const cards = require(`../../public/data/Decks/Deck${deck[0].id}.json`);
+    console.log(params);
 
     return {
         props: {

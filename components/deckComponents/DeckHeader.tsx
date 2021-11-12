@@ -23,18 +23,8 @@ const DeckHeader = ({ deck }) => {
         window.addEventListener("load", () => {
             updateDimensions();
         });
-        // console.log(request);
-        // init();
     }, []);
-    // async function init() {
-    //     const res = await fetch("/App", {
-    //         headers: {
-    //             cookie: "",
-    //         },
-    //     });
-    //     const resp = await res.text();
-    //     console.log(resp);
-    // }
+
     useEffect(() => {
         updateDimensions();
 

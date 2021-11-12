@@ -1,4 +1,3 @@
-const { query } = require("express");
 const express = require("express");
 const next = require("next");
 
@@ -12,8 +11,13 @@ app.prepare()
     .then(() => {
         const server = express();
 
-        server.get("/App", (req, res) => {
-            app.render(req, res, "/Crypto");
+        server.get("/quotes/", (req, res) => {
+            const { index, deckid } = req.query;
+            fetch(`${req.get("host")}/data/Decks/Deck${deckid}.json`).then((deck) => {
+                console.log(deck[index].quote);
+                res.status(200).json({ quotetext: deck[index].quote });
+            });
+            // res.status(200).send();
         });
 
         server.get("*", (req, res) => {

@@ -8,18 +8,15 @@ import React from "react";
 import Deck from "../pages/[Deck]";
 import Link from "next/link";
 
-const Menu = ({ deck }) => {
-    const deckId = deck.id;
-    const setdeckId = useDeckContext().setdeckId;
+const Menu = ({ deck = undefined }) => {
+    const deckId = deck && deck.id;
+    const setdeckId = deck && useDeckContext().setdeckId;
 
     useEffect(() => {
+        if (!deck) return;
         const logo = document.getElementById("logo");
         const submenuElement = document.getElementById("submenu");
         const currentdeck = document.getElementById("currentdeck");
-
-        const cardsElement = document.getElementById("cards");
-        const supplyElement = document.getElementById("supply");
-        const galleryElement = document.getElementById("gallery");
 
         let submenuSet = false;
 
@@ -98,9 +95,6 @@ const Menu = ({ deck }) => {
             }
         }
 
-        // const deckMenu_cards = document.getElementById("deckMenu_cards");
-        // const deckMenu_supply = document.getElementById("deckMenu_supply");
-        // const deckMenu_gallery = document.getElementById("deckMenu_gallery");
         window.addEventListener("scroll", listener, false);
 
         return () => {
@@ -133,7 +127,7 @@ const Menu = ({ deck }) => {
                             </a>
                             <div className={`currentDeck relative`} id="currentdeck">
                                 <div className={`flex align-center company`}>PLAYING ARTS</div>
-                                <div className={`flex align-center deck`}>{deck.name}</div>
+                                {deck && <div className={`flex align-center deck`}>{deck.name}</div>}
                             </div>
                         </div>
                         <div
@@ -155,33 +149,35 @@ const Menu = ({ deck }) => {
                             shop
                         </a>
                     </div>
-                    <div className={`overflow-hidden sub-menu-container`}>
-                        <div className={`flex content-center sub-menu relative`} id={`sub-menu`}>
-                            <div className={`items flex`}>
-                                <Link href="/zero">
-                                    <div className={`item h-p ${deckId === 0 ? "activate" : ""}`}>ZERO</div>
-                                </Link>
-                                <Link href="/one">
-                                    <div className={`item h-p ${deckId === 1 ? "activate" : ""}`}>ONE</div>
-                                </Link>
-                                <Link href="/two">
-                                    <div className={`item h-p ${deckId === 2 ? "activate" : ""}`}>TWO</div>
-                                </Link>
-                                <Link href="/three">
-                                    <div className={`item h-p ${deckId === 3 ? "activate" : ""}`}>THREE</div>
-                                </Link>
-                                <Link href="/special">
-                                    <div className={`item h-p ${deckId === 4 ? "activate" : ""}`}>SPECIAL</div>
-                                </Link>
-                                <Link href="/future">
-                                    <div className={`item h-p ${deckId === 5 ? "activate" : ""}`}>FUTURE</div>
-                                </Link>
-                                <Link href="/crypto">
-                                    <div className={`item h-p ${deckId === 6 ? "activate" : ""}`}>CRYPTO</div>
-                                </Link>
+                    {deck && (
+                        <div className={`overflow-hidden sub-menu-container`}>
+                            <div className={`flex content-center sub-menu relative`} id={`sub-menu`}>
+                                <div className={`items flex`}>
+                                    <Link href="/zero">
+                                        <div className={`item h-p ${deckId === 0 ? "activate" : ""}`}>ZERO</div>
+                                    </Link>
+                                    <Link href="/one">
+                                        <div className={`item h-p ${deckId === 1 ? "activate" : ""}`}>ONE</div>
+                                    </Link>
+                                    <Link href="/two">
+                                        <div className={`item h-p ${deckId === 2 ? "activate" : ""}`}>TWO</div>
+                                    </Link>
+                                    <Link href="/three">
+                                        <div className={`item h-p ${deckId === 3 ? "activate" : ""}`}>THREE</div>
+                                    </Link>
+                                    <Link href="/special">
+                                        <div className={`item h-p ${deckId === 4 ? "activate" : ""}`}>SPECIAL</div>
+                                    </Link>
+                                    <Link href="/future">
+                                        <div className={`item h-p ${deckId === 5 ? "activate" : ""}`}>FUTURE</div>
+                                    </Link>
+                                    <Link href="/crypto">
+                                        <div className={`item h-p ${deckId === 6 ? "activate" : ""}`}>CRYPTO</div>
+                                    </Link>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    )}
                 </div>
             </header>
             {/* <Deck /> */}
