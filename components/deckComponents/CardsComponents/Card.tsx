@@ -67,7 +67,7 @@ const Card = ({ item, index }) => {
                             id="loader"
                             style={{
                                 transition: "0.75s",
-                                background: "#EAEAEA",
+                                background: "#181818",
                                 position: "absolute",
                                 width: "100%",
                                 height: "100%",

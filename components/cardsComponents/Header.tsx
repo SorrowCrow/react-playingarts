@@ -51,7 +51,7 @@ const Header = ({ card, deck }) => {
                                 borderRadius: "15px",
                                 overflow: "hidden",
                                 transition: "0.75s",
-                                background: "#EAEAEA",
+                                background: "#181818",
                                 position: "absolute",
                                 width: "100%",
                                 height: "100%",
