@@ -17,6 +17,8 @@ function Card({ deck, card }) {
                 height: "100%",
                 display: "flex",
                 opacity: "1",
+                left: "0",
+                top: "0",
                 zIndex: 10000,
             }}
         >
@@ -32,9 +34,9 @@ function Card({ deck, card }) {
                     display: "flex",
                 }}
             >
-                <Logo fill="white" style={{ margin: "auto" }} />
+                <Logo fill="#181818" style={{ margin: "auto" }} />
             </div>
-            <Diamonds style={{ margin: "auto", animation: "2s linear infinite loader" }} />
+            <Diamonds fill="#C4C4C4" style={{ margin: "auto", animation: "2s linear infinite loader" }} />
         </div>
     );
 

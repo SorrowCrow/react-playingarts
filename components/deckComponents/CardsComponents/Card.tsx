@@ -76,7 +76,10 @@ const Card = ({ item, index }) => {
                                 zIndex: 1,
                             }}
                         >
-                            <Diamonds style={{ margin: "auto", animation: "2s linear infinite loader" }} />
+                            <Diamonds
+                                fill="#C4C4C4"
+                                style={{ margin: "auto", animation: "2s linear infinite loader" }}
+                            />
                         </div>
                     )}
                     <LazyLoadImage

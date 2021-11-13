@@ -68,7 +68,7 @@ const Quote = ({ arrows, index, deck }) => {
                                 <span>{quote}</span>
                                 <Link href={`${deck.Deck}/${cardsData.currentCard}`}>
                                     <div className={`h-p flex align-center `}>
-                                        Read More <Arrow />
+                                        Read More <Arrow fill={`rgba(10, 10, 10, 0.5)`} />
                                     </div>
                                 </Link>
                             </div>

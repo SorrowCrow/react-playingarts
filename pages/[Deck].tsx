@@ -36,9 +36,9 @@ function Deck({ deck, cards }) {
                     display: "flex",
                 }}
             >
-                <Logo fill="white" style={{ margin: "auto" }} />
+                <Logo fill="#181818" style={{ margin: "auto" }} />
             </div>
-            <Diamonds style={{ margin: "auto", animation: "2s linear infinite loader" }} />
+            <Diamonds fill="#C4C4C4" style={{ margin: "auto", animation: "2s linear infinite loader" }} />
         </div>
     );
 
