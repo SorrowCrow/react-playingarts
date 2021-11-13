@@ -50,7 +50,8 @@ const Header = ({ card, deck, cards, id }) => {
         if (!quote) return;
         setquoteHeight(quote.clientHeight);
         setheight(quote.clientHeight);
-    }, []);
+        setloading(true);
+    }, [id]);
 
     useEffect(() => {
         const quote = document.getElementById(`quote`);
@@ -60,11 +61,11 @@ const Header = ({ card, deck, cards, id }) => {
             const height = quote.clientHeight;
             quote.style.height = "";
             quote.style.height = height + "px";
-            setheight(height + "px");
+            setheight(height);
         } else {
             if (quoteHeight !== undefined && quoteHeight !== 0) {
                 quote.style.height = quoteHeight + "px";
-                setheight(quoteHeight + "px");
+                setheight(quoteHeight);
             } else quote.style.height = "";
         }
     }, [readMore]);
@@ -165,13 +166,22 @@ const Header = ({ card, deck, cards, id }) => {
                             </div>
                         )}
                     </div>
-                    <div style={{ height: height }} className={`quoteCover relative overflow-hidden`}>
+                    <div style={{ height: height + "px" }} className={`quoteCover relative overflow-hidden`}>
                         <div className={`quote ${readMore && "full"}`} id={`quote`}>
                             "{card.quote}"
                         </div>
                     </div>
                     <div className={`h-p flex align-center readMore`} onClick={() => setreadMore(!readMore)}>
-                        {!readMore ? <> Read More</> : <>Read Less</>} <Arrow />
+                        {height >= 450 &&
+                            (!readMore ? (
+                                <>
+                                    Read More <Arrow />
+                                </>
+                            ) : (
+                                <>
+                                    Read Less <Arrow />
+                                </>
+                            ))}
                     </div>
                     <div className={`flex relative align-center`}>
                         <div className={`authorsLine w-100 align-center absolute`}></div>

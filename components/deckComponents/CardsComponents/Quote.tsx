@@ -39,8 +39,7 @@ const Quote = ({ arrows, index }) => {
 
             let heighto = span.clientHeight;
 
-            if (heighto > 225) setquoteHeight(225);
-            else setquoteHeight(heighto);
+            setquoteHeight(heighto);
 
             setheight(document.getElementById(`quoteContent${index}`).clientHeight + "px");
         }, 1);
@@ -95,7 +94,7 @@ const Quote = ({ arrows, index }) => {
                                     {quote}
                                     <div className={`absolute`}></div>
                                 </span>
-                                {quoteHeight === 225 && !readMore && (
+                                {quoteHeight > 200 && !readMore && (
                                     <div className={`h-p flex align-center `} onClick={() => setreadMore(!readMore)}>
                                         Read More <Arrow fill={`rgba(10, 10, 10, 0.5)`} />
                                     </div>
