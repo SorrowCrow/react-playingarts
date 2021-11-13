@@ -41,6 +41,10 @@ function Card({ deck, card, cards, id }) {
     );
 
     useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            left: 0
+        });
         if (document.readyState != "complete") {
             window.addEventListener("load", (event) => {
                 document.getElementById("loader").style.opacity = "0";

@@ -17,31 +17,29 @@ const Card = ({ item, index, deck }) => {
     }, [item.url]);
 
     useEffect(() => {
-        if (hover) {
-            let cardsItemWidth = 285;
-            const width = document.getElementsByClassName(`cards-deck`)[0].clientWidth;
-            let i = 1;
+        if (!hover) return;
+        let cardsItemWidth = 285;
+        const width = document.getElementsByClassName(`cards-deck`)[0].clientWidth;
+        let i = 1;
 
-            while (width / cardsItemWidth !== 1) {
-                cardsItemWidth = cardsItemWidth + 285 + 30;
-                i++;
+        while (width / cardsItemWidth !== 1) {
+            cardsItemWidth = cardsItemWidth + 285 + 30;
+            i++;
+        }
+
+        if (cardsData.rowlength !== i) setcardsData((prevdata) => ({ ...prevdata, rowlength: i, tempindex: index }));
+        else {
+            let position = cardsData.position;
+            if ((index + 1) % i === 0) {
+                if (position !== index + 1) setcardsData((prevdata) => ({ ...prevdata, position: index + 1 }));
+            } else {
+                let b = index + 1;
+                while ((b + 1) % i !== 0) b++;
+
+                if (b + 1 !== position) setcardsData((prevdata) => ({ ...prevdata, position: b + 1 }));
             }
-
-            if (cardsData.rowlength !== i)
-                setcardsData((prevdata) => ({ ...prevdata, rowlength: i, tempindex: index }));
-            else {
-                let position = cardsData.position;
-                if ((index + 1) % i === 0) {
-                    if (position !== index + 1) setcardsData((prevdata) => ({ ...prevdata, position: index + 1 }));
-                } else {
-                    let b = index + 1;
-                    while ((b + 1) % i !== 0) b++;
-
-                    if (b + 1 !== position) setcardsData((prevdata) => ({ ...prevdata, position: b + 1 }));
-                }
-                index !== cardsData.oldindex &&
-                    setcardsData((prevdata) => ({ ...prevdata, oldindex: index, tempindex: index }));
-            }
+            index !== cardsData.oldindex &&
+                setcardsData((prevdata) => ({ ...prevdata, oldindex: index, tempindex: index }));
         }
     }, [hover]);
 

@@ -13,11 +13,35 @@ import Behance from "../../public/assets/socials-4.svg";
 import Social from "../../public/assets/socials-5.svg";
 import Link from "next/link";
 
+const THRESHOLD = 10;
+
 const Header = ({ card, deck, cards, id }) => {
     const [loading, setloading] = useState(true);
 
+    let image;
+    function handleHover(e) {
+        const { clientX, clientY, currentTarget } = e;
+        const { clientWidth, clientHeight, offsetLeft, offsetTop } = currentTarget;
+
+        const horizontal = (clientX - offsetLeft) / clientWidth;
+        const vertical = (clientY - offsetTop) / clientHeight;
+
+        const rotateX = (THRESHOLD / 2 - horizontal * THRESHOLD).toFixed(2);
+        const rotateY = (vertical * THRESHOLD - THRESHOLD / 2).toFixed(2);
+
+        image.style.transform = `perspective(${clientWidth}px) rotateX(${-rotateY}deg) rotateY(${-rotateX}deg) scale3d(1, 1, 1)`;
+        setTimeout(() => {
+            image.style.transition = ``;
+        }, 250);
+    }
+
+    function resetStyles(e) {
+        image.style.transition = `0.25s ease-in-out`;
+        image.style.transform = `perspective(${e.currentTarget.clientWidth}px) rotateX(0deg) rotateY(0deg)`;
+    }
+
     useEffect(() => {
-        const listener = () => {
+        function listener() {
             const fixedscrolllockoffset = document.getElementById("fixedscrolllock").offsetTop;
             const image = document.getElementById("image");
             const imageContainer = document.getElementById("imageContainer");
@@ -32,7 +56,7 @@ const Header = ({ card, deck, cards, id }) => {
                 image.style.position = "";
                 image.style.bottom = "";
             }
-        };
+        }
 
         window.addEventListener("scroll", listener, false);
 
@@ -47,10 +71,18 @@ const Header = ({ card, deck, cards, id }) => {
 
     useEffect(() => {
         const quote = document.getElementById(`quote`);
+        image = document.getElementById("image");
         if (!quote) return;
         setquoteHeight(quote.clientHeight);
         setheight(quote.clientHeight);
         setloading(true);
+
+        image.addEventListener("mousemove", handleHover);
+        image.addEventListener("mouseleave", resetStyles);
+        return () => {
+            image.removeEventListener("mousemove", handleHover);
+            image.removeEventListener("mouseleave", resetStyles);
+        };
     }, [id]);
 
     useEffect(() => {
@@ -74,14 +106,14 @@ const Header = ({ card, deck, cards, id }) => {
         <>
             <div className={`nav fixed w-100`}>
                 {cards[Number(id) - 1] && (
-                    <Link href={`/${deck.Deck}/${Number(id) - 1}`}>
+                    <Link href={`/${deck.Deck}/${Number(id) - 1}`} scroll={false}>
                         <div className="h-p item leftItem flex content-center align-center">
                             <div className={`leftArrow arrow`}></div>
                         </div>
                     </Link>
                 )}
                 {cards[Number(id) + 1] && (
-                    <Link href={`/${deck.Deck}/${Number(id) + 1}`}>
+                    <Link href={`/${deck.Deck}/${Number(id) + 1}`} scroll={false}>
                         <div className="h-p item rightItem flex content-center align-center">
                             <div className={`rightArrow arrow`}></div>
                         </div>
@@ -101,16 +133,12 @@ const Header = ({ card, deck, cards, id }) => {
                 <div className={`cardBlock-cardInfo-image relative flex`} id={`imageContainer`}>
                     {loading && (
                         <div
-                            id="loader"
+                            id="image"
                             style={
                                 deck.Deck === "crypto"
                                     ? {
                                           borderRadius: "15px",
                                           overflow: "hidden",
-                                          transition: "0.75s",
-                                          position: "absolute",
-                                          width: "100%",
-                                          height: "100%",
                                           display: "flex",
                                           opacity: "1",
                                           zIndex: 1,
@@ -119,10 +147,6 @@ const Header = ({ card, deck, cards, id }) => {
                                     : {
                                           borderRadius: "15px",
                                           overflow: "hidden",
-                                          transition: "0.75s",
-                                          position: "absolute",
-                                          width: "100%",
-                                          height: "100%",
                                           display: "flex",
                                           opacity: "1",
                                           zIndex: 1,
@@ -138,9 +162,11 @@ const Header = ({ card, deck, cards, id }) => {
                     )}
                     <LazyLoadImage
                         id="image"
+                        style={loading ? { display: "none" } : {}}
                         src={card.url.includes(".gif") ? card.url : card.url + ".jpg"}
                         effect="opacity"
                         onLoad={(e) => {
+                            1;
                             e.target.src.indexOf("data:image/gif;base64") < 0 && setloading(false);
                         }}
                     />
