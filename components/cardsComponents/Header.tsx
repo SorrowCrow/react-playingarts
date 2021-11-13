@@ -79,8 +79,21 @@ const Header = ({ card, deck, cards, id }) => {
     }, [id]);
 
     useEffect(() => {
+        image = document.getElementById("image");
+        const fixedscrolllockoffset = document.getElementById("fixedscrolllock").offsetTop;
+        const imageContainer = document.getElementById("imageContainer");
         image.addEventListener("mousemove", handleHover);
         image.addEventListener("mouseleave", resetStyles);
+        if (!image) return;
+        const imageoffset = window.pageYOffset + imageContainer.offsetTop + image.clientHeight;
+
+        if (imageoffset >= fixedscrolllockoffset) {
+            image.style.position = "absolute";
+            image.style.bottom = "-" + (fixedscrolllockoffset - imageContainer.offsetTop - image.clientHeight) + "px";
+        } else {
+            image.style.position = "";
+            image.style.bottom = "";
+        }
         return () => {
             image.removeEventListener("mousemove", handleHover);
             image.removeEventListener("mouseleave", resetStyles);
@@ -164,7 +177,7 @@ const Header = ({ card, deck, cards, id }) => {
                     )}
                     <LazyLoadImage
                         id="image"
-                        style={loading ? { display: "none" } : {}}
+                        style={loading ? { opacity: "0" } : {}}
                         src={card.url.includes(".gif") ? card.url : card.url + ".jpg"}
                         effect="opacity"
                         onLoad={(e) => {
