@@ -147,7 +147,7 @@ const Cards = ({ cards, deck }) => {
             </div>
             <div className={`cards-deck `}>
                 <div className={`cards-deck-content flex flex-wrap content-between`}>
-                    {cards && cards.map((item: any, index: number) => <Card item={item} index={index} />)}
+                    {cards && cards.map((item: any, index: number) => <Card deck={deck} item={item} index={index} />)}
                     <Quote deck={deck} arrows={arrows} index={0} />
                     <Quote deck={deck} arrows={arrows} index={1} />
                 </div>

@@ -4,7 +4,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import Diamonds from "../../../public/assets/diamonds.svg";
 import { useCardsContext, useSetCardsContext } from "../CardsContext";
 
-const Card = ({ item, index }) => {
+const Card = ({ item, index, deck }) => {
     const cardsData = useCardsContext().cardsData;
     const setcardsData = useSetCardsContext().setcardsData;
 
@@ -65,16 +65,33 @@ const Card = ({ item, index }) => {
                     {loading && (
                         <div
                             id="loader"
-                            style={{
-                                transition: "0.75s",
-                                background: "#181818",
-                                position: "absolute",
-                                width: "100%",
-                                height: "100%",
-                                display: "flex",
-                                opacity: "1",
-                                zIndex: 1,
-                            }}
+                            style={
+                                deck.Deck === "crypto"
+                                    ? {
+                                          borderRadius: "15px",
+                                          overflow: "hidden",
+                                          transition: "0.75s",
+                                          position: "absolute",
+                                          width: "100%",
+                                          height: "100%",
+                                          display: "flex",
+                                          opacity: "1",
+                                          zIndex: 1,
+                                          background: "#181818",
+                                      }
+                                    : {
+                                          borderRadius: "15px",
+                                          overflow: "hidden",
+                                          transition: "0.75s",
+                                          position: "absolute",
+                                          width: "100%",
+                                          height: "100%",
+                                          display: "flex",
+                                          opacity: "1",
+                                          zIndex: 1,
+                                          background: "white",
+                                      }
+                            }
                         >
                             <Diamonds
                                 fill="#C4C4C4"

@@ -47,18 +47,33 @@ const Header = ({ card, deck }) => {
                     {loading && (
                         <div
                             id="loader"
-                            style={{
-                                borderRadius: "15px",
-                                overflow: "hidden",
-                                transition: "0.75s",
-                                background: "#181818",
-                                position: "absolute",
-                                width: "100%",
-                                height: "100%",
-                                display: "flex",
-                                opacity: "1",
-                                zIndex: 1,
-                            }}
+                            style={
+                                deck.Deck === "crypto"
+                                    ? {
+                                          borderRadius: "15px",
+                                          overflow: "hidden",
+                                          transition: "0.75s",
+                                          position: "absolute",
+                                          width: "100%",
+                                          height: "100%",
+                                          display: "flex",
+                                          opacity: "1",
+                                          zIndex: 1,
+                                          background: "#181818",
+                                      }
+                                    : {
+                                          borderRadius: "15px",
+                                          overflow: "hidden",
+                                          transition: "0.75s",
+                                          position: "absolute",
+                                          width: "100%",
+                                          height: "100%",
+                                          display: "flex",
+                                          opacity: "1",
+                                          zIndex: 1,
+                                          background: "white",
+                                      }
+                            }
                         >
                             <Diamonds
                                 fill={`#C4C4C4`}
