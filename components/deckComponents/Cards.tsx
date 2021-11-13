@@ -120,15 +120,10 @@ const Cards = ({ cards, deck }) => {
         i++
     ) {
         let temp = cardsData.oldindex;
-        while (temp >= cardsData.rowlength) {
-            temp -= cardsData.rowlength;
-        }
+        while (temp >= cardsData.rowlength) temp -= cardsData.rowlength;
 
-        if (i === temp) {
-            arrows.push(<div className={`quote-arrow`}></div>);
-        } else {
-            arrows.push(<div className={`quote-arrow`} style={{ opacity: 0 }}></div>);
-        }
+        if (i === temp) arrows.push(<div className={`quote-arrow`}></div>);
+        else arrows.push(<div className={`quote-arrow`} style={{ opacity: 0 }}></div>);
     }
 
     return (
@@ -146,10 +141,10 @@ const Cards = ({ cards, deck }) => {
                 </div>
             </div>
             <div className={`cards-deck `}>
-                <div className={`cards-deck-content flex flex-wrap content-between`}>
+                <div className={`cards-deck-content flex flex-wrap content-between`} id={`cardsDeckContent`}>
                     {cards && cards.map((item: any, index: number) => <Card deck={deck} item={item} index={index} />)}
-                    <Quote deck={deck} arrows={arrows} index={0} />
-                    <Quote deck={deck} arrows={arrows} index={1} />
+                    <Quote arrows={arrows} index={0} />
+                    <Quote arrows={arrows} index={1} />
                 </div>
             </div>
         </div>

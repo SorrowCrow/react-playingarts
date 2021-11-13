@@ -5,7 +5,7 @@ import Diamonds from "../../public/assets/diamonds.svg";
 import Menu from "../../components/Menu";
 import Header from "../../components/cardsComponents/Header";
 
-function Card({ deck, card }) {
+function Card({ deck, card, cards, id }) {
     const [state, setstate] = useState(
         <div
             id="loader"
@@ -62,7 +62,7 @@ function Card({ deck, card }) {
                 logocolor="rgba(234, 234, 234, 0.5)"
             />
             <div className="cardBlock">
-                <Header deck={deck} card={card} />
+                <Header deck={deck} card={card} cards={cards} id={id} />
             </div>
         </>
     );
@@ -99,6 +99,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         props: {
             deck: deck[0],
             card: cards[Number(params.Card)],
+            cards: cards,
+            id: params.Card,
         },
     };
 };

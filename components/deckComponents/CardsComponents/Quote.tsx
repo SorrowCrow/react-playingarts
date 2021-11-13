@@ -2,9 +2,8 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useCardsContext } from "../CardsContext";
 import Arrow from "../../../public/assets/arrow.svg";
-import Link from "next/link";
 
-const Quote = ({ arrows, index, deck }) => {
+const Quote = ({ arrows, index }) => {
     const cardsData = useCardsContext().cardsData;
 
     const [height, setheight] = useState("0px");
@@ -13,6 +12,9 @@ const Quote = ({ arrows, index, deck }) => {
     const [author, setauthor] = useState("");
 
     const [position, setposition] = useState(0);
+
+    const [readMore, setreadMore] = useState(false);
+    const [quoteHeight, setquoteHeight] = useState(0);
 
     useEffect(() => {
         if (cardsData.position <= 0 || cardsData.quotenumb == index) return;
@@ -31,9 +33,20 @@ const Quote = ({ arrows, index, deck }) => {
         if (cardsData.oldindex === cardsData.currentCard) setquote(cardsData.quote);
 
         setTimeout(function () {
+            setreadMore(false);
+            const span = document.getElementById(`span${index}`);
+            span.style.height = "";
+
+            let heighto = span.clientHeight;
+
+            if (heighto > 225) setquoteHeight(225);
+            else setquoteHeight(heighto);
+
             setheight(document.getElementById(`quoteContent${index}`).clientHeight + "px");
         }, 1);
     }, [cardsData.quote, position]);
+
+    useEffect(() => {}, [quote]);
 
     useEffect(() => {
         if (cardsData.position <= 0) return;
@@ -47,6 +60,26 @@ const Quote = ({ arrows, index, deck }) => {
             }, 1);
     }, [cardsData.quotenumb]);
 
+    useEffect(() => {
+        if (cardsData.position <= 0 || cardsData.quotenumb != index) return;
+        const span = document.getElementById(`span${index}`);
+        if (!span) return;
+        if (readMore) {
+            span.style.height = "auto";
+            const height = span.clientHeight;
+            span.style.height = "";
+            span.style.height = height + "px";
+            setTimeout(function () {
+                setheight(document.getElementById(`quoteContent${index}`).clientHeight + "px");
+            }, 1);
+        } else {
+            span.style.height = quoteHeight + "px";
+            setTimeout(function () {
+                setheight(document.getElementById(`quoteContent${index}`).clientHeight + "px");
+            }, 1);
+        }
+    }, [readMore]);
+
     return (
         <div className={`quoteCover overflow-hidden relative`} id={`quote${index}`} style={{ height: height }}>
             <div className={`quote absolute`} id={`quoteContent${index}`}>
@@ -54,23 +87,19 @@ const Quote = ({ arrows, index, deck }) => {
                     <div className={`quote-line`}></div>
                     {arrows}
                 </div>
-                <div
-                    className={`quote-content`}
-                    style={
-                        {
-                            // height: height,
-                        }
-                    }
-                >
+                <div className={`quote-content`}>
                     <div className={`quote-content-cover ${cardsData.quote === "" ? "fadeOut" : "fadeIn"}`}>
                         <div className={`flex`}>
                             <div className={`quote-content-quote relative `}>
-                                <span>{quote}</span>
-                                <Link href={`${deck.Deck}/${cardsData.currentCard}`}>
-                                    <div className={`h-p flex align-center `}>
+                                <span id={`span${index}`} className={readMore && "full"}>
+                                    {quote}
+                                    <div className={`absolute`}></div>
+                                </span>
+                                {quoteHeight === 225 && !readMore && (
+                                    <div className={`h-p flex align-center `} onClick={() => setreadMore(!readMore)}>
                                         Read More <Arrow fill={`rgba(10, 10, 10, 0.5)`} />
                                     </div>
-                                </Link>
+                                )}
                             </div>
                             <div className={`quote-content-author`}>
                                 <Image src="/assets/victorvector.png" width="75" height="75" />

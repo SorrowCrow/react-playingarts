@@ -11,8 +11,9 @@ import Instagram from "../../public/assets/socials-2.svg";
 import Facebook from "../../public/assets/socials-3.svg";
 import Behance from "../../public/assets/socials-4.svg";
 import Social from "../../public/assets/socials-5.svg";
+import Link from "next/link";
 
-const Header = ({ card, deck }) => {
+const Header = ({ card, deck, cards, id }) => {
     const [loading, setloading] = useState(true);
 
     useEffect(() => {
@@ -40,8 +41,61 @@ const Header = ({ card, deck }) => {
         };
     }, []);
 
+    const [readMore, setreadMore] = useState(false);
+    const [quoteHeight, setquoteHeight] = useState(undefined);
+    const [height, setheight] = useState(undefined);
+
+    useEffect(() => {
+        const quote = document.getElementById(`quote`);
+        if (!quote) return;
+        setquoteHeight(quote.clientHeight);
+        setheight(quote.clientHeight);
+    }, []);
+
+    useEffect(() => {
+        const quote = document.getElementById(`quote`);
+        if (!quote) return;
+        if (readMore) {
+            quote.style.height = "auto";
+            const height = quote.clientHeight;
+            quote.style.height = "";
+            quote.style.height = height + "px";
+            setheight(height + "px");
+        } else {
+            if (quoteHeight !== undefined && quoteHeight !== 0) {
+                quote.style.height = quoteHeight + "px";
+                setheight(quoteHeight + "px");
+            } else quote.style.height = "";
+        }
+    }, [readMore]);
+
     return (
         <>
+            <div className={`nav fixed w-100`}>
+                {cards[Number(id) - 1] && (
+                    <Link href={`/${deck.Deck}/${Number(id) - 1}`}>
+                        <div className="h-p item leftItem flex content-center align-center">
+                            <div className={`leftArrow arrow`}></div>
+                        </div>
+                    </Link>
+                )}
+                {cards[Number(id) + 1] && (
+                    <Link href={`/${deck.Deck}/${Number(id) + 1}`}>
+                        <div className="h-p item rightItem flex content-center align-center">
+                            <div className={`rightArrow arrow`}></div>
+                        </div>
+                    </Link>
+                )}
+
+                <Link href={{ pathname: `/${deck.Deck}`, query: { card: id } }}>
+                    <div className={`exitCover absolute`}>
+                        <div className={`h-p exit content-center flex align-center relative`}>
+                            <div className="exitItem absolute"></div>
+                            <div className="exitItem absolute"></div>
+                        </div>
+                    </div>
+                </Link>
+            </div>
             <div className={`cardBlock-cardInfo flex flex-wrap content-between`}>
                 <div className={`cardBlock-cardInfo-image relative flex`} id={`imageContainer`}>
                     {loading && (
@@ -111,11 +165,13 @@ const Header = ({ card, deck }) => {
                             </div>
                         )}
                     </div>
-                    <div className={`quote`}>
-                        "{card.quote}"
-                        <div className={`h-p flex align-center `}>
-                            Read More <Arrow />
+                    <div style={{ height: height }} className={`quoteCover relative overflow-hidden`}>
+                        <div className={`quote ${readMore && "full"}`} id={`quote`}>
+                            "{card.quote}"
                         </div>
+                    </div>
+                    <div className={`h-p flex align-center readMore`} onClick={() => setreadMore(!readMore)}>
+                        {!readMore ? <> Read More</> : <>Read Less</>} <Arrow />
                     </div>
                     <div className={`flex relative align-center`}>
                         <div className={`authorsLine w-100 align-center absolute`}></div>

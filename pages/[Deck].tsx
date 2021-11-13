@@ -8,8 +8,11 @@ import Diamonds from "../public/assets/diamonds.svg";
 import Menu from "../components/Menu";
 import Gallery from "../components/deckComponents/Gallery";
 import CardsContext from "../components/deckComponents/CardsContext";
+import { useRouter } from "next/dist/client/router";
 
 function Deck({ deck, cards }) {
+    const router = useRouter();
+
     const [state, setstate] = useState(
         <div
             id="loader"
@@ -43,16 +46,24 @@ function Deck({ deck, cards }) {
     );
 
     useEffect(() => {
-        if (document.readyState != "complete") {
+        // console.log(router.query.card);
+        const element: any = document.getElementsByClassName("cardsItem")[Number(router.query.card)];
+        element && console.log(document.getElementById("cards").offsetTop + element.offsetTop);
+
+        router.replace("/crypto", undefined, { shallow: true });
+        element !== undefined &&
+            window.scrollTo({
+                top: document.getElementById("cards").offsetTop + element.offsetTop + 140,
+                behavior: "smooth",
+            });
+        if (document.readyState != "complete")
             window.addEventListener("load", (event) => {
                 document.getElementById("loader").style.opacity = "0";
                 setTimeout(function () {
                     setstate(undefined);
                 }, 750);
             });
-        } else {
-            setstate(undefined);
-        }
+        else setstate(undefined);
     }, []);
 
     return (

@@ -1,6 +1,54 @@
 .cardBlock {
     background: black;
     width: 100%;
+    .nav {
+        top: 392px;
+        .item {
+            width: 74px;
+            height: 74px;
+        }
+        .leftItem {
+            margin-left: 52px;
+            float: left;
+        }
+        .rightItem {
+            margin-right: 52px;
+            float: right;
+        }
+        .leftArrow {
+            transform: rotate(45deg);
+            border-left: 2px solid rgba(255, 255, 255, 0.2);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        .rightArrow {
+            transform: rotate(-45deg);
+            border-right: 2px solid rgba(255, 255, 255, 0.2);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        .arrow {
+            width: 38.32px;
+            height: 38.32px;
+        }
+        .exitCover {
+            right: 0;
+        }
+        .exit {
+            width: 60px;
+            height: 60px;
+            float: right;
+            margin-right: 38px;
+            margin-top: -190px;
+            .exitItem {
+                transform: rotate(45deg);
+                width: 43.3px;
+                border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+                background: black;
+            }
+            .exitItem:last-child {
+                transform: rotate(-45deg);
+            }
+        }
+    }
     &-cardInfo {
         padding-top: 140px;
         @include marginGutter(2);
@@ -60,19 +108,37 @@
                     }
                 }
             }
+            .quoteCover {
+                transition: 0.25s;
+            }
             .quote {
+                transition: 0.25s;
                 font-size: 30px;
-                line-height: 150%;
+                line-height: 45px;
                 color: rgba(234, 234, 234, 0.5);
-                margin-bottom: 26px;
-                div {
-                    font-weight: 500;
-                    font-size: 18px;
-                    line-height: 21px;
-                    margin-top: 30px;
-                    svg {
-                        fill: rgba(234, 234, 234, 0.5);
-                    }
+                overflow: hidden;
+                position: relative;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                line-clamp: 10;
+                -webkit-line-clamp: 10;
+                height: 450px;
+                overflow: hidden;
+            }
+            .full {
+                line-clamp: initial;
+                -webkit-line-clamp: initial;
+            }
+            .readMore {
+                color: rgba(234, 234, 234, 0.5);
+                font-weight: 500;
+                font-size: 18px;
+                line-height: 21px;
+                padding-top: 30px;
+                padding-bottom: 26px;
+                svg {
+                    margin-left: 5px;
+                    fill: rgba(234, 234, 234, 0.5);
                 }
             }
             .authorsLine {
