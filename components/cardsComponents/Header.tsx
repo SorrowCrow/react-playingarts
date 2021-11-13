@@ -76,14 +76,16 @@ const Header = ({ card, deck, cards, id }) => {
         setquoteHeight(quote.clientHeight);
         setheight(quote.clientHeight);
         setloading(true);
+    }, [id]);
 
+    useEffect(() => {
         image.addEventListener("mousemove", handleHover);
         image.addEventListener("mouseleave", resetStyles);
         return () => {
             image.removeEventListener("mousemove", handleHover);
             image.removeEventListener("mouseleave", resetStyles);
         };
-    }, [id]);
+    }, [loading]);
 
     useEffect(() => {
         const quote = document.getElementById(`quote`);
