@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Arrow from "../../public/assets/arrow.svg";
 import Diamonds from "../../public/assets/diamonds.svg";
 import { LazyLoadImage } from "react-lazy-load-image-component";
@@ -40,6 +40,19 @@ const Header = ({ card, deck, cards, id }) => {
         image.style.transform = `perspective(${e.currentTarget.clientWidth}px) rotateX(0deg) rotateY(0deg)`;
     }
 
+    const escFunction = useCallback((event) => {
+        if (event.code === "Escape") {
+            const exit = document.getElementById("exit");
+            exit?.click();
+        } else if (event.code === "ArrowRight") {
+            const exit = document.getElementById("cardRight");
+            exit?.click();
+        } else if (event.code === "ArrowLeft") {
+            const exit = document.getElementById("cardLeft");
+            exit?.click();
+        }
+    }, []);
+
     useEffect(() => {
         function listener() {
             const fixedscrolllockoffset = document.getElementById("fixedscrolllock").offsetTop;
@@ -59,9 +72,11 @@ const Header = ({ card, deck, cards, id }) => {
         }
 
         window.addEventListener("scroll", listener, false);
+        document.addEventListener("keydown", escFunction, false);
 
         return () => {
-            window.removeEventListener("scroll", listener);
+            window.removeEventListener("scroll", listener, false);
+            document.removeEventListener("keydown", escFunction, false);
         };
     }, []);
 
@@ -126,21 +141,21 @@ const Header = ({ card, deck, cards, id }) => {
             <div className={`nav fixed w-100`}>
                 {cards[Number(id) - 1] && (
                     <Link href={`/${deck.Deck}/${Number(id) - 1}`} scroll={false}>
-                        <div className="h-p item leftItem flex content-center align-center">
+                        <div className="h-p item leftItem flex content-center align-center" id={"cardLeft"}>
                             <div className={`leftArrow arrow`}></div>
                         </div>
                     </Link>
                 )}
                 {cards[Number(id) + 1] && (
                     <Link href={`/${deck.Deck}/${Number(id) + 1}`} scroll={false}>
-                        <div className="h-p item rightItem flex content-center align-center">
+                        <div className="h-p item rightItem flex content-center align-center" id={"cardRight"}>
                             <div className={`rightArrow arrow`}></div>
                         </div>
                     </Link>
                 )}
 
                 <Link href={{ pathname: `/${deck.Deck}`, query: { card: id } }}>
-                    <div className={`exitCover absolute`}>
+                    <div className={`exitCover absolute`} id={"exit"}>
                         <div className={`h-p exit content-center flex align-center relative`}>
                             <div className="exitItem absolute"></div>
                             <div className="exitItem absolute"></div>
