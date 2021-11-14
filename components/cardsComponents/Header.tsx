@@ -80,6 +80,10 @@ const Header = ({ card, deck, cards, id }) => {
 
     useEffect(() => {
         image = document.getElementById("image");
+        if (loading) {
+            const video: any = document.getElementsByTagName("video")[0];
+            video.load();
+        }
         const fixedscrolllockoffset = document.getElementById("fixedscrolllock").offsetTop;
         const imageContainer = document.getElementById("imageContainer");
         if (!image) return;
@@ -146,7 +150,7 @@ const Header = ({ card, deck, cards, id }) => {
             </div>
             <div className={`cardBlock-cardInfo flex flex-wrap content-between`}>
                 <div className={`cardBlock-cardInfo-image relative flex`} id={`imageContainer`}>
-                    {/* {loading && (
+                    {loading && (
                         <div
                             id="image"
                             style={
@@ -175,23 +179,18 @@ const Header = ({ card, deck, cards, id }) => {
                             />
                         </div>
                     )}
-                    <LazyLoadImage
+                    <video
+                        loop
+                        autoPlay
+                        muted
+                        playsInline
+                        preload="metadata"
                         id="image"
                         style={loading ? { opacity: "0" } : {}}
-                        src={card.url.includes(".gif") ? card.url : card.url + ".jpg"}
-                        effect="opacity"
-                        onLoad={(e) => {
-                            1;
-                            e.target.src.indexOf("data:image/gif;base64") < 0 && setloading(false);
+                        onLoadedMetadata={(e) => {
+                            setloading(false);
                         }}
-                    /> */}
-                    {/* <video id="image" ng-if="isVisible" autoPlay loop muted playsInline preload="metadata">
-                        <source
-                            src="https://s3.amazonaws.com/img.playingarts.com/crypto/cards/2-d-QK444t2B.mp4?3?3"
-                            type="video/mp4"
-                        />
-                    </video> */}
-                    <video loop autoPlay muted playsInline preload="metadata" style={{ zIndex: 100 }} id="image">
+                    >
                         <source src={card.url.includes(".gif") ? card.url : card.url + ".mp4"} type="video/mp4" />
                     </video>
                 </div>
