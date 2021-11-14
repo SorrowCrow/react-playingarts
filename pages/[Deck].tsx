@@ -46,11 +46,10 @@ function Deck({ deck, cards }) {
     );
 
     useEffect(() => {
-        // console.log(router.query.card);
         const element: any = document.getElementsByClassName("cardsItem")[Number(router.query.card)];
         element && console.log(document.getElementById("cards").offsetTop + element.offsetTop);
 
-        router.replace("/crypto", undefined, { shallow: true });
+        router.replace(`/${deck.Deck}`, undefined, { shallow: true });
         element !== undefined &&
             window.scrollTo({
                 top: document.getElementById("cards").offsetTop + element.offsetTop + 140,

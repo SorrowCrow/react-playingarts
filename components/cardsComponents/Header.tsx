@@ -86,7 +86,7 @@ const Header = ({ card, deck, cards, id }) => {
 
     useEffect(() => {
         const video: any = document.getElementsByTagName("video")[0];
-        video.load();
+        video?.load();
         const quote = document.getElementById(`quote`);
         image = document.getElementById("image");
         if (!quote) return;
@@ -192,20 +192,32 @@ const Header = ({ card, deck, cards, id }) => {
                             />
                         </div>
                     )}
-                    <video
-                        loop
-                        autoPlay
-                        muted
-                        playsInline
-                        preload="metadata"
-                        id="image"
-                        style={loading ? { opacity: "0" } : {}}
-                        onLoadedMetadata={(e) => {
-                            setloading(false);
-                        }}
-                    >
-                        <source src={card.url.includes(".gif") ? card.url : card.url + ".mp4"} type="video/mp4" />
-                    </video>
+                    {deck.Deck === "crypto" ? (
+                        <video
+                            loop
+                            autoPlay
+                            muted
+                            playsInline
+                            preload="metadata"
+                            id="image"
+                            style={loading ? { opacity: "0" } : {}}
+                            onLoadedMetadata={(e) => {
+                                setloading(false);
+                            }}
+                        >
+                            <source src={card.url + ".mp4"} type="video/mp4" />
+                        </video>
+                    ) : (
+                        <LazyLoadImage
+                            id="image"
+                            src={card.url.includes(".gif") ? card.url : card.url + ".jpg"}
+                            effect="opacity"
+                            style={loading ? { opacity: "0" } : {}}
+                            onLoad={(e) => {
+                                e.target.src.indexOf("data:image/gif;base64") < 0 && setloading(false);
+                            }}
+                        />
+                    )}
                 </div>
                 <div className={`cardBlock-cardInfo-cardText`}>
                     <div className="container flex flex-column content-center">
