@@ -85,6 +85,8 @@ const Header = ({ card, deck, cards, id }) => {
     const [height, setheight] = useState(undefined);
 
     useEffect(() => {
+        const video: any = document.getElementsByTagName("video")[0];
+        video.load();
         const quote = document.getElementById(`quote`);
         image = document.getElementById("image");
         if (!quote) return;
@@ -95,10 +97,6 @@ const Header = ({ card, deck, cards, id }) => {
 
     useEffect(() => {
         image = document.getElementById("image");
-        if (loading) {
-            const video: any = document.getElementsByTagName("video")[0];
-            video.load();
-        }
         const fixedscrolllockoffset = document.getElementById("fixedscrolllock").offsetTop;
         const imageContainer = document.getElementById("imageContainer");
         if (!image) return;
