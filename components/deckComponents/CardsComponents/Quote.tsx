@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useCardsContext } from "../CardsContext";
 import Arrow from "../../../public/assets/arrow.svg";
 
-const Quote = ({ arrows, index }) => {
+const Quote = ({ arrows, index, deck }) => {
     const cardsData = useCardsContext().cardsData;
 
     const [height, setheight] = useState("0px");
@@ -45,7 +45,9 @@ const Quote = ({ arrows, index }) => {
         }, 1);
     }, [cardsData.quote, position]);
 
-    useEffect(() => {}, [quote]);
+    useEffect(() => {
+        setheight("0px");
+    }, [deck.Deck]);
 
     useEffect(() => {
         if (cardsData.position <= 0) return;

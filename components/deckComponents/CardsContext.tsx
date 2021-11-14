@@ -2,6 +2,7 @@ import { createContext, Dispatch, SetStateAction, useContext, useEffect, useStat
 
 interface Props {
     children: React.ReactNode;
+    deck: any;
 }
 
 interface ContextDataProps {
@@ -47,7 +48,7 @@ export function useSetCardsContext() {
     return useContext(SetCardsContext);
 }
 
-const CardsProvider = ({ children }: Props) => {
+const CardsProvider = ({ children, deck }: Props) => {
     const [cardsData, setcardsData] = useState({
         height: "0px",
         prevheight: "0px",
@@ -62,6 +63,21 @@ const CardsProvider = ({ children }: Props) => {
     });
 
     const [rowlength, setrowlength] = useState(0);
+
+    useEffect(() => {
+        setcardsData({
+            height: "0px",
+            prevheight: "0px",
+            quotenumb: false,
+            position: null,
+            rowlength: 0,
+            oldindex: null,
+            tempindex: 0,
+            quote: "",
+            author: "",
+            currentCard: null,
+        });
+    }, [deck.Deck]);
 
     useEffect(() => {
         if (cardsData.position <= 0) return;

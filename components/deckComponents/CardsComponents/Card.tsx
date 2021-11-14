@@ -48,16 +48,11 @@ const Card = ({ item, index, deck }) => {
             <div
                 className={`item cardsItem h-p`}
                 id={`card`}
-                onMouseEnter={() => sethover(!hover)}
-                onMouseLeave={() => sethover(!hover)}
+                onMouseEnter={() => sethover(true)}
+                onMouseLeave={() => sethover(false)}
             >
                 <div className={`artwork-cover`}>
                     <div className={`artwork relative`}>
-                        {/* {hover && (
-                            <video loop muted playsInline preload="metadata" className="w-100 h-100" style={{ zIndex: 100 }}>
-                        <source src={mp4url} type="video/mp4" />
-                        </video>
-                )} */}
                         {loading && (
                             <div
                                 id="loader"
@@ -95,6 +90,27 @@ const Card = ({ item, index, deck }) => {
                                 />
                             </div>
                         )}
+                        {hover && (
+                            <video
+                                loop
+                                autoPlay
+                                muted
+                                playsInline
+                                preload="metadata"
+                                className="w-100 h-100 absolute"
+                                id={`cardvideo${index}`}
+                                style={{ zIndex: -1 }}
+                                onLoadedMetadata={(e) => {
+                                    document.getElementById(`cardvideo${index}`).style.zIndex = "";
+                                }}
+                            >
+                                <source
+                                    src={item.url.includes(".gif") ? item.url : item.url + ".mp4"}
+                                    type="video/mp4"
+                                />
+                            </video>
+                        )}
+
                         <LazyLoadImage
                             src={item.url.includes(".gif") ? item.url : item.url + ".jpg"}
                             effect="opacity"

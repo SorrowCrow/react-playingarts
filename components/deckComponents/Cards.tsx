@@ -90,8 +90,6 @@ const Cards = ({ cards, deck }) => {
         insertAfter(document.getElementById(id), cardsItem);
     }, [cardsData.quotenumb]);
 
-    const [loading, setloading] = useState(false);
-
     useEffect(() => {
         if (cardsData.position <= 0) return;
 
@@ -143,8 +141,8 @@ const Cards = ({ cards, deck }) => {
             <div className={`cards-deck `}>
                 <div className={`cards-deck-content flex flex-wrap content-between`} id={`cardsDeckContent`}>
                     {cards && cards.map((item: any, index: number) => <Card deck={deck} item={item} index={index} />)}
-                    <Quote arrows={arrows} index={0} />
-                    <Quote arrows={arrows} index={1} />
+                    <Quote arrows={arrows} index={0} deck={deck} />
+                    <Quote arrows={arrows} index={1} deck={deck} />
                 </div>
             </div>
         </div>

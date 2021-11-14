@@ -77,7 +77,7 @@ function Deck({ deck, cards }) {
                 metamaskbackground={"#181818"}
             />
             <DeckHeader deck={deck} />
-            <CardsContext>
+            <CardsContext deck={deck}>
                 <Cards cards={cards} deck={deck} />
             </CardsContext>
             <Supply deck={deck} />
